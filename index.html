@@ -216,6 +216,26 @@
   .value-arrow{align-self:center;font-weight:700;color:var(--gray-text);}
   .principles{margin:16px 0;padding-left:24px;}
   .principles li{font-size:16px;margin-bottom:8px;}
+
+  .container{max-width:1320px;}
+  .layout{display:flex;max-width:1320px;margin:0 auto;align-items:flex-start;}
+  .sidebar{width:240px;flex-shrink:0;position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto;padding:32px 8px 32px 48px;box-sizing:border-box;}
+  .content{flex:1;min-width:0;max-width:1080px;}
+  .side-nav{display:flex;flex-direction:column;gap:4px;}
+  .side-nav a{color:var(--black);text-decoration:none;font-size:13px;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:8px;}
+  .side-nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);opacity:0;flex-shrink:0;}
+  .side-nav a.active{font-weight:700;background:var(--gray-bg);}
+  .side-nav a.active::before{opacity:1;}
+  .side-nav .side-top{font-size:16px;font-weight:700;}
+  .side-group{font-size:13px;font-weight:700;color:var(--gray-text);margin:16px 0 4px;padding:0 12px;}
+  .site-nav a .dot{opacity:0;}
+  .site-nav a.current .dot{opacity:1;}
+  @media (max-width: 900px){
+    .layout{flex-direction:column;}
+    .sidebar{position:static;width:auto;max-height:none;overflow:visible;padding:16px 24px 0;}
+    .side-nav{flex-direction:row;flex-wrap:wrap;}
+    .side-group{width:100%;margin:8px 0 0;}
+  }
 </style>
 </head>
 <body>
@@ -225,9 +245,8 @@
   <div class="container">
     <div class="logo">WAKU<span class="logo-note">ロゴはSVGで制作予定（仮テキスト）</span></div>
     <nav class="site-nav">
-      <a href="#" class="current"><span class="dot"></span>Works</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="#foundation" data-spy="foundation"><span class="dot"></span>スタイル</a>
+      <a href="#components" data-spy="components">コンポーネント</a>
     </nav>
     <button class="nav-toggle" aria-label="メニュー">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><rect x="3" y="5" width="18" height="3" rx="1.5"/><rect x="3" y="11" width="18" height="3" rx="1.5"/><rect x="3" y="17" width="18" height="3" rx="1.5"/></svg>
@@ -235,7 +254,32 @@
   </div>
 </header>
 
-<main class="container">
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="side-nav">
+      <a class="side-top" href="#brand" data-spy="brand">ブランドの核</a>
+      <div class="side-group">スタイル</div>
+      <a href="#color" data-spy="color">Color</a>
+      <a href="#color-usage" data-spy="color-usage">Color の使い方</a>
+      <a href="#text-style" data-spy="text-style">Text Style</a>
+      <a href="#radius" data-spy="radius">Corner Radius</a>
+      <a href="#shadow" data-spy="shadow">Shadow</a>
+      <a href="#spacing" data-spy="spacing">Spacing</a>
+      <a href="#icons" data-spy="icons">Icons</a>
+      <div class="side-group">コンポーネント</div>
+      <a href="#c-header" data-spy="c-header">Header</a>
+      <a href="#c-button" data-spy="c-button">Button</a>
+      <a href="#c-card" data-spy="c-card">Card</a>
+      <a href="#c-tag" data-spy="c-tag">Tag / Badge</a>
+      <a href="#c-divider" data-spy="c-divider">Divider</a>
+      <a href="#c-heading" data-spy="c-heading">Heading</a>
+      <a href="#c-accordion" data-spy="c-accordion">Accordion</a>
+      <a href="#c-list" data-spy="c-list">List</a>
+      <a href="#c-image" data-spy="c-image">Image</a>
+      <a href="#site-footer">Footer</a>
+    </nav>
+  </aside>
+  <main class="container content">
 
   <!-- ===== Hero ===== -->
   <div class="hero">
@@ -289,7 +333,7 @@
     <div class="section-head"><span class="mark"></span><h2>基本要素</h2></div>
     <p class="section-lead">すべてのデザインの土台になる決まりです。</p>
 
-    <h3 class="sub-head">Color</h3>
+    <h3 class="sub-head" id="color">Color</h3>
     <div class="swatches">
       <div class="swatch">
         <div class="chip" style="background:#FFFFFF;"></div>
@@ -317,11 +361,11 @@
       </div>
     </div>
 
-    <h3 class="sub-head">Color の使い方</h3>
+    <h3 class="sub-head" id="color-usage">Color の使い方</h3>
     <p class="note">配分の目安は、白（背景）がいちばん大きく、次に黒（文字と線）、グレーは補助、ビビットグリーンは面積を小さく「印」としてだけ使います。緑を本文の文字色には使いません。色を増やしたくなったら、まずグレーで足りないか考えます。</p>
     <p class="note">やってはいけない例：緑の大きな背景、色の数を増やす、影を重ねる、本文をグレーで書く（補助文字グレーは日付や注釈だけ）。</p>
 
-    <h3 class="sub-head">Text Style</h3>
+    <h3 class="sub-head" id="text-style">Text Style</h3>
     <p class="note" style="margin-bottom:16px;">和文は Noto Sans JP、欧文は Poppins（どちらも Google Fonts）。サイズは 10／16／26／42 の4段階で、比率は約1.618（黄金比）。行間は本文で1.7倍が目安です。</p>
     <div class="type-list">
       <div class="type-row"><div class="spec">42px / Bold</div><div class="t-42">ページタイトル</div></div>
@@ -330,7 +374,7 @@
       <div class="type-row"><div class="spec">10px / Regular</div><div class="t-10">2026.11.05 日付やキャプションなどの補助テキスト</div></div>
     </div>
 
-    <h3 class="sub-head">Corner Radius</h3>
+    <h3 class="sub-head" id="radius">Corner Radius</h3>
     <p class="note" style="margin-bottom:16px;">角丸は「要素の短辺の長さ」で決めます。気分で変えないのがルールです。タグとボタンはピル型で統一します。</p>
     <div class="radius-grid">
       <div class="radius-item">
@@ -360,13 +404,13 @@
       </div>
     </div>
 
-    <h3 class="sub-head">Shadow</h3>
+    <h3 class="sub-head" id="shadow">Shadow</h3>
     <p class="note" style="margin-bottom:16px;">基本は影なし（フラット）で、区切りは線と余白で付けます。例外として、画面の上に浮く要素（ポップアップや浮いたボタン）だけ、黒 #000000 の10%透過・右下にずれる・ぼかしなしの影を1種類だけ使います（ずれ：右4px／下8px）。ボタンはホバーのときだけこの影が付きます。</p>
     <div class="shadow-stage">
       <div class="shadow-demo">浮いている要素のサンプル</div>
     </div>
 
-    <h3 class="sub-head">Spacing</h3>
+    <h3 class="sub-head" id="spacing">Spacing</h3>
     <p class="note" style="margin-bottom:16px;">余白の基本単位は8px。余白は8で割り切れる数字だけを使います。小さいパーツに限って、4で割り切れる数字（例：12px）も使えます。要素の中の余白は16、要素と要素の間は24、セクションの間は64が目安です。</p>
     <div class="spacing-list">
       <div class="spacing-row"><div class="spacing-bar" style="width:4px;"></div><div class="s-label">4</div></div>
@@ -378,7 +422,7 @@
       <div class="spacing-row"><div class="spacing-bar" style="width:64px;"></div><div class="s-label">64</div></div>
     </div>
 
-    <h3 class="sub-head">Icons</h3>
+    <h3 class="sub-head" id="icons">Icons</h3>
     <p class="note" style="margin-bottom:16px;">塗り（面）のアイコンで統一します。形は丸みのあるものを選び、サイズは24pxが基本、小さい所は20px。色は黒が基本で、目立たせたい所だけビビットグリーンにします。</p>
     <div class="icon-row">
       <div class="icon-item">
@@ -412,10 +456,10 @@
     <p class="section-lead">ポートフォリオでよく使う部品の決まりです。すべて実際の表示サンプルです。</p>
     <p class="note">Figmaファイルには全28種のコンポーネントがあります：見出し／ボタン／ボックス／ローディング／リスト／吹き出し／アコーディオンメニュー／検索フォーム／セレクトボックス／パンくずリスト／テキストボックス／ツールチップ／Q&amp;Aリスト／引用ボックス／レーダーチャート／「続きを読む」ボタン／タブ／トグルボタン／チェックボックス／フッター／付箋／ページネーション／円グラフ／ラジオボタン／目次／棒グラフ／モーダルウィンドウ／タイムライン。このページでは代表的なものを実際の表示で紹介します。</p>
 
-    <h3 class="sub-head">Header</h3>
-    <p class="note">このページ上部のヘッダー自体がサンプルです。背景は白、下の線は黒の細い線、高さ64px。左にロゴ（SVGで制作予定、今は仮テキスト）、右にメニュー（Works／About／Contact）。現在地のメニューにはビビットグリーンの小さな丸印が付きます。スマホではメニューを塗りアイコンのボタンに集約します。</p>
+    <h3 class="sub-head" id="c-header">Header</h3>
+    <p class="note">このページ上部のヘッダー自体がサンプルです。背景は白、下の線は黒の細い線、高さ64px。左にロゴ（SVGで制作予定、今は仮テキスト）、右にメニュー。現在地のメニューにはビビットグリーンの小さな丸印が付きます。メニューの項目はサイトごとに決めます（ポートフォリオでは Works／About／Contact、このドキュメントサイトでは スタイル／コンポーネント）。スマホではメニューを塗りアイコンのボタンに集約します。</p>
 
-    <h3 class="sub-head">Button</h3>
+    <h3 class="sub-head" id="c-button">Button</h3>
     <p class="note" style="margin-bottom:16px;">形はピル型。高さ48px（小さい用は40px）、横の余白24px。ホバーでだけ影（黒10%・右下ずれ・ぼかしなし）が付き、押すと影が消えて少し沈みます。</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="#">プライマリ</a>
@@ -424,7 +468,7 @@
       <button class="btn btn-text">テキストボタン<span class="arrow">→</span></button>
     </div>
 
-    <h3 class="sub-head">Card</h3>
+    <h3 class="sub-head" id="c-card">Card</h3>
     <p class="note" style="margin-bottom:16px;">作品カードです。サムネイル（角丸16px・比率4:3）＋タイトル（16px太字）＋カテゴリタグ＋日付（10px・補助文字グレー）。影はなし。一覧はパソコン3列／スマホ1列。新しい作品には「New」バッジを左上に重ねます。</p>
     <div class="card-grid">
       <article class="card">
@@ -448,7 +492,7 @@
       </article>
     </div>
 
-    <h3 class="sub-head">Tag / Badge</h3>
+    <h3 class="sub-head" id="c-tag">Tag / Badge</h3>
     <p class="note" style="margin-bottom:16px;">タグはピル型、背景は背景グレー #F7F7F7、文字13px。選択中だけ #00FF00 背景＋黒文字になります。バッジは #00FF00 背景、黒文字10px太字、ピル型です。</p>
     <div class="btn-row">
       <span class="tag">通常のタグ</span>
@@ -456,17 +500,17 @@
       <span class="badge-new" style="position:static;">New</span>
     </div>
 
-    <h3 class="sub-head">Divider</h3>
+    <h3 class="sub-head" id="c-divider">Divider</h3>
     <p class="note">強い区切りは黒の線、弱い区切りは線グレー #E0E0E0 の2種類です。</p>
     <hr class="divider-strong">
     <p class="note">↑ 強い区切り（黒）／↓ 弱い区切り（線グレー）</p>
     <hr class="divider-weak">
 
-    <h3 class="sub-head">Heading</h3>
+    <h3 class="sub-head" id="c-heading">Heading</h3>
     <p class="note" style="margin-bottom:16px;">セクション見出し（26px太字）の左に、ビビットグリーンの小さな丸印を付けます。このページの「基本要素」「コンポーネント」の見出しがその形です。</p>
     <div class="section-head"><span class="mark"></span><h2>見出しのサンプル</h2></div>
 
-    <h3 class="sub-head">Accordion</h3>
+    <h3 class="sub-head" id="c-accordion">Accordion</h3>
     <p class="note" style="margin-bottom:16px;">タイトル行＋右端に塗りアイコンの矢印（開くと下向き）。区切りは弱い線グレーです。プロフィールの詳細などを開閉するのに使います。</p>
     <div class="accordion">
       <details>
@@ -483,7 +527,7 @@
       </details>
     </div>
 
-    <h3 class="sub-head">List</h3>
+    <h3 class="sub-head" id="c-list">List</h3>
     <p class="note" style="margin-bottom:16px;">左に日付（10px・補助文字グレー）、右にタイトル（16px）。行の区切りは線グレーです。お知らせや実績の一覧に使います。</p>
     <div class="list">
       <div class="list-row"><div class="date">2026.11.05</div><div class="title">デザインシステムを公開しました</div></div>
@@ -491,7 +535,7 @@
       <div class="list-row"><div class="date">2026.09.12</div><div class="title">お仕事の受付を開始しました</div></div>
     </div>
 
-    <h3 class="sub-head">Image</h3>
+    <h3 class="sub-head" id="c-image">Image</h3>
     <p class="note" style="margin-bottom:16px;">画像は比率4:3が基本、角丸16px。キャプションは10pxの補助文字グレーです。</p>
     <figure class="img-demo">
       <div class="frame"><div class="thumb-circle"></div></div>
@@ -500,9 +544,11 @@
   </section>
 
 </main>
+</div>
 
 <!-- ===== Footer ===== -->
-<footer class="site-footer">
+
+<footer class="site-footer" id="site-footer">
   <div class="container">
     <div class="logo">Miyu Sugiyama</div>
     <nav class="foot-nav">
@@ -519,5 +565,33 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var links = document.querySelectorAll('[data-spy]');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('data-spy')] = a; });
+  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+  var seen = {};
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+    var current = null;
+    targets.forEach(function(id){ if (seen[id]) current = current || id; });
+    // pick the first visible in document order among spy sections
+    var activeId = null;
+    targets.forEach(function(id){ if (seen[id] && !activeId) activeId = id; });
+    links.forEach(function(a){ a.classList.remove('active'); a.classList.remove('current'); });
+    if (activeId && map[activeId]) { map[activeId].classList.add('active'); }
+    // header: foundation group -> スタイル, components group -> コンポーネント
+    var compIds = ['components','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+    var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','icons'];
+    var headerKey = null;
+    if (activeId && compIds.indexOf(activeId) >= 0) headerKey = 'components';
+    else if (activeId && styleIds.indexOf(activeId) >= 0) headerKey = 'foundation';
+    if (headerKey && map[headerKey] && map[headerKey].closest('.site-nav')) map[headerKey].classList.add('current');
+  }, { rootMargin: '-80px 0px -60% 0px' });
+  targets.forEach(function(id){ var el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+</script>
 </body>
 </html>
