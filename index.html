@@ -245,8 +245,8 @@
   <div class="container">
     <div class="logo">WAKU<span class="logo-note">ロゴはSVGで制作予定（仮テキスト）</span></div>
     <nav class="site-nav">
-      <a href="#foundation" data-spy="foundation"><span class="dot"></span>スタイル</a>
-      <a href="#components" data-spy="components">コンポーネント</a>
+      <a href="styles.html"><span class="dot"></span>スタイル</a>
+      <a href="components.html">コンポーネント</a>
     </nav>
     <button class="nav-toggle" aria-label="メニュー">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><rect x="3" y="5" width="18" height="3" rx="1.5"/><rect x="3" y="11" width="18" height="3" rx="1.5"/><rect x="3" y="17" width="18" height="3" rx="1.5"/></svg>
@@ -257,26 +257,10 @@
 <div class="layout">
   <aside class="sidebar">
     <nav class="side-nav">
-      <a class="side-top" href="#brand" data-spy="brand">ブランドの核</a>
       <div class="side-group">スタイル</div>
-      <a href="#color" data-spy="color">Color</a>
-      <a href="#color-usage" data-spy="color-usage">Color の使い方</a>
-      <a href="#text-style" data-spy="text-style">Text Style</a>
-      <a href="#radius" data-spy="radius">Corner Radius</a>
-      <a href="#shadow" data-spy="shadow">Shadow</a>
-      <a href="#spacing" data-spy="spacing">Spacing</a>
-      <a href="#icons" data-spy="icons">Icons</a>
+      <a href="styles.html">スタイルのページへ</a>
       <div class="side-group">コンポーネント</div>
-      <a href="#c-header" data-spy="c-header">Header</a>
-      <a href="#c-button" data-spy="c-button">Button</a>
-      <a href="#c-card" data-spy="c-card">Card</a>
-      <a href="#c-tag" data-spy="c-tag">Tag / Badge</a>
-      <a href="#c-divider" data-spy="c-divider">Divider</a>
-      <a href="#c-heading" data-spy="c-heading">Heading</a>
-      <a href="#c-accordion" data-spy="c-accordion">Accordion</a>
-      <a href="#c-list" data-spy="c-list">List</a>
-      <a href="#c-image" data-spy="c-image">Image</a>
-      <a href="#site-footer">Footer</a>
+      <a href="components.html">コンポーネントのページへ</a>
     </nav>
   </aside>
   <main class="container content">
@@ -296,252 +280,11 @@
 
   <hr class="divider-strong">
 
-  <!-- ===== ブランドの核 ===== -->
-  <section id="brand">
-    <div class="section-head"><span class="mark"></span><h2>ブランドの核</h2></div>
-    <p class="section-lead">WAKUの土台にある考え方です。デザインで迷ったときは、ここに戻ります。</p>
 
-    <h3 class="sub-head">理念（Vision）</h3>
-    <p class="vision">毎日を、わたしの見方で切りとる。少しの遊び心を添えて。</p>
-    <p class="note">世の中の複雑なものを、自分の観点でディフォルメして切り取る。その作業を、わかりやすく整理して支えるのがデザインの役割です。対象は大きなことではなく、毎日の暮らしです。</p>
-
-    <h3 class="sub-head">価値観（Values）</h3>
-    <div class="values">
-      <div class="value-item"><div class="value-word">きりとる</div><p>複雑な世界から、自分の観点で大事な部分を切り取る。</p></div>
-      <div class="value-arrow">→</div>
-      <div class="value-item"><div class="value-word">ととのえる</div><p>切り取ったものを、わかりやすく整理する。</p></div>
-      <div class="value-arrow">→</div>
-      <div class="value-item"><div class="value-word">つくる</div><p>作品やデザインとして形にする。届いた先で、また新しい「きりとる」が始まります。</p></div>
-    </div>
-
-    <h3 class="sub-head">デザイン原則</h3>
-    <ol class="principles">
-      <li>色は少なく。緑は「印」にだけ使う（本文には使わない）</li>
-      <li>余白を先に決める。詰め込まない</li>
-      <li>かわいさは、1か所に少しだけ</li>
-      <li>迷ったら、シンプルな方を選ぶ</li>
-    </ol>
-
-    <h3 class="sub-head">文章のトーン</h3>
-    <p class="note">短く、やさしく。専門用語は少なめに。堅い言い切りより柔らかい言い方を選びます。でも、内容は具体的に書きます。</p>
-  </section>
-
-  <hr class="divider-strong">
-
-  <!-- ===== 基本要素 ===== -->
-  <section id="foundation">
-    <div class="section-head"><span class="mark"></span><h2>基本要素</h2></div>
-    <p class="section-lead">すべてのデザインの土台になる決まりです。</p>
-
-    <h3 class="sub-head" id="color">Color</h3>
-    <div class="swatches">
-      <div class="swatch">
-        <div class="chip" style="background:#FFFFFF;"></div>
-        <div class="meta"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">背景</div></div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:#000000;"></div>
-        <div class="meta"><div class="name">Black</div><div class="hex">#000000</div><div class="role">文字と線</div></div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:#00FF00;"></div>
-        <div class="meta"><div class="name">Vivid Green</div><div class="hex">#00FF00</div><div class="role">アクセント（目印・面のみ。文字色には使わない）</div></div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:#F7F7F7;"></div>
-        <div class="meta"><div class="name">背景グレー</div><div class="hex">#F7F7F7</div><div class="role">白の代わりに敷く面</div></div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:#E0E0E0;"></div>
-        <div class="meta"><div class="name">線グレー</div><div class="hex">#E0E0E0</div><div class="role">弱い区切り線</div></div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:#757575;"></div>
-        <div class="meta"><div class="name">補助文字グレー</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div></div>
-      </div>
-    </div>
-
-    <h3 class="sub-head" id="color-usage">Color の使い方</h3>
-    <p class="note">配分の目安は、白（背景）がいちばん大きく、次に黒（文字と線）、グレーは補助、ビビットグリーンは面積を小さく「印」としてだけ使います。緑を本文の文字色には使いません。色を増やしたくなったら、まずグレーで足りないか考えます。</p>
-    <p class="note">やってはいけない例：緑の大きな背景、色の数を増やす、影を重ねる、本文をグレーで書く（補助文字グレーは日付や注釈だけ）。</p>
-
-    <h3 class="sub-head" id="text-style">Text Style</h3>
-    <p class="note" style="margin-bottom:16px;">和文は Noto Sans JP、欧文は Poppins（どちらも Google Fonts）。サイズは 10／16／26／42 の4段階で、比率は約1.618（黄金比）。行間は本文で1.7倍が目安です。</p>
-    <div class="type-list">
-      <div class="type-row"><div class="spec">42px / Bold</div><div class="t-42">ページタイトル</div></div>
-      <div class="type-row"><div class="spec">26px / Bold</div><div class="t-26">セクション見出し</div></div>
-      <div class="type-row"><div class="spec">16px / Regular</div><div class="t-16">本文です。カードのタイトルは、このサイズの太字で兼用します。</div></div>
-      <div class="type-row"><div class="spec">10px / Regular</div><div class="t-10">2026.11.05 日付やキャプションなどの補助テキスト</div></div>
-    </div>
-
-    <h3 class="sub-head" id="radius">Corner Radius</h3>
-    <p class="note" style="margin-bottom:16px;">角丸は「要素の短辺の長さ」で決めます。気分で変えないのがルールです。タグとボタンはピル型で統一します。</p>
-    <div class="radius-grid">
-      <div class="radius-item">
-        <div class="radius-box" style="border-radius:0;"></div>
-        <div class="r-name">0</div>
-        <div class="r-use">写真そのもの、区切り線</div>
-      </div>
-      <div class="radius-item">
-        <div class="radius-box" style="border-radius:4px;"></div>
-        <div class="r-name">4</div>
-        <div class="r-use">バッジ、小さいボタンなど（短辺 〜20px）</div>
-      </div>
-      <div class="radius-item">
-        <div class="radius-box" style="border-radius:8px;"></div>
-        <div class="r-name">8</div>
-        <div class="r-use">小さいカードなど（短辺 21〜64px）</div>
-      </div>
-      <div class="radius-item">
-        <div class="radius-box" style="border-radius:16px;"></div>
-        <div class="r-name">16</div>
-        <div class="r-use">作品カードなど（短辺 65px〜）</div>
-      </div>
-      <div class="radius-item">
-        <div class="radius-box" style="border-radius:999px;height:48px;margin-top:24px;"></div>
-        <div class="r-name">Pill</div>
-        <div class="r-use">タグ・チップ、ボタン専用</div>
-      </div>
-    </div>
-
-    <h3 class="sub-head" id="shadow">Shadow</h3>
-    <p class="note" style="margin-bottom:16px;">基本は影なし（フラット）で、区切りは線と余白で付けます。例外として、画面の上に浮く要素（ポップアップや浮いたボタン）だけ、黒 #000000 の10%透過・右下にずれる・ぼかしなしの影を1種類だけ使います（ずれ：右4px／下8px）。ボタンはホバーのときだけこの影が付きます。</p>
-    <div class="shadow-stage">
-      <div class="shadow-demo">浮いている要素のサンプル</div>
-    </div>
-
-    <h3 class="sub-head" id="spacing">Spacing</h3>
-    <p class="note" style="margin-bottom:16px;">余白の基本単位は8px。余白は8で割り切れる数字だけを使います。小さいパーツに限って、4で割り切れる数字（例：12px）も使えます。要素の中の余白は16、要素と要素の間は24、セクションの間は64が目安です。</p>
-    <div class="spacing-list">
-      <div class="spacing-row"><div class="spacing-bar" style="width:4px;"></div><div class="s-label">4</div></div>
-      <div class="spacing-row"><div class="spacing-bar" style="width:8px;"></div><div class="s-label">8</div></div>
-      <div class="spacing-row"><div class="spacing-bar" style="width:16px;"></div><div class="s-label">16</div></div>
-      <div class="spacing-row"><div class="spacing-bar" style="width:24px;"></div><div class="s-label">24</div></div>
-      <div class="spacing-row"><div class="spacing-bar" style="width:32px;"></div><div class="s-label">32</div></div>
-      <div class="spacing-row"><div class="spacing-bar" style="width:48px;"></div><div class="s-label">48</div></div>
-      <div class="spacing-row"><div class="spacing-bar" style="width:64px;"></div><div class="s-label">64</div></div>
-    </div>
-
-    <h3 class="sub-head" id="icons">Icons</h3>
-    <p class="note" style="margin-bottom:16px;">塗り（面）のアイコンで統一します。形は丸みのあるものを選び、サイズは24pxが基本、小さい所は20px。色は黒が基本で、目立たせたい所だけビビットグリーンにします。</p>
-    <div class="icon-row">
-      <div class="icon-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 21s-7.5-4.7-10-9.3C.3 8.6 2.2 4.5 6.1 4.5c2.2 0 3.7 1.2 4.6 2.7.4.7 2.2.7 2.6 0 .9-1.5 2.4-2.7 4.6-2.7 3.9 0 5.8 4.1 4.1 7.2C19.5 16.3 12 21 12 21z" transform="scale(0.92) translate(1,0)"/></svg>
-        <div class="i-name">お気に入り</div>
-      </div>
-      <div class="icon-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
-        <div class="i-name">おすすめ</div>
-      </div>
-      <div class="icon-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 3l9 8h-3v9a1 1 0 0 1-1 1h-4v-6H11v6H7a1 1 0 0 1-1-1v-9H3z"/></svg>
-        <div class="i-name">ホーム</div>
-      </div>
-      <div class="icon-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#00FF00" stroke="#000" stroke-width="0.5"><circle cx="11" cy="11" r="7"/><rect x="15.5" y="15.5" width="7" height="3" rx="1.5" transform="rotate(45 19 17)"/></svg>
-        <div class="i-name">検索（アクセント色）</div>
-      </div>
-      <div class="icon-item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M20 11H7.8l4.6-4.6L11 5l-7 7 7 7 1.4-1.4L7.8 13H20z" transform="scale(-1,1) translate(-24,0)"/></svg>
-        <div class="i-name">進む</div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider-strong">
-
-  <!-- ===== コンポーネント ===== -->
-  <section id="components">
-    <div class="section-head"><span class="mark"></span><h2>コンポーネント</h2></div>
-    <p class="section-lead">ポートフォリオでよく使う部品の決まりです。すべて実際の表示サンプルです。</p>
-    <p class="note">Figmaファイルには全28種のコンポーネントがあります：見出し／ボタン／ボックス／ローディング／リスト／吹き出し／アコーディオンメニュー／検索フォーム／セレクトボックス／パンくずリスト／テキストボックス／ツールチップ／Q&amp;Aリスト／引用ボックス／レーダーチャート／「続きを読む」ボタン／タブ／トグルボタン／チェックボックス／フッター／付箋／ページネーション／円グラフ／ラジオボタン／目次／棒グラフ／モーダルウィンドウ／タイムライン。このページでは代表的なものを実際の表示で紹介します。</p>
-
-    <h3 class="sub-head" id="c-header">Header</h3>
-    <p class="note">このページ上部のヘッダー自体がサンプルです。背景は白、下の線は黒の細い線、高さ64px。左にロゴ（SVGで制作予定、今は仮テキスト）、右にメニュー。現在地のメニューにはビビットグリーンの小さな丸印が付きます。メニューの項目はサイトごとに決めます（ポートフォリオでは Works／About／Contact、このドキュメントサイトでは スタイル／コンポーネント）。スマホではメニューを塗りアイコンのボタンに集約します。</p>
-
-    <h3 class="sub-head" id="c-button">Button</h3>
-    <p class="note" style="margin-bottom:16px;">形はピル型。高さ48px（小さい用は40px）、横の余白24px。ホバーでだけ影（黒10%・右下ずれ・ぼかしなし）が付き、押すと影が消えて少し沈みます。</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="#">プライマリ</a>
-      <a class="btn btn-secondary" href="#">通常ボタン</a>
-      <a class="btn btn-primary btn-small" href="#">小さいボタン</a>
-      <button class="btn btn-text">テキストボタン<span class="arrow">→</span></button>
-    </div>
-
-    <h3 class="sub-head" id="c-card">Card</h3>
-    <p class="note" style="margin-bottom:16px;">作品カードです。サムネイル（角丸16px・比率4:3）＋タイトル（16px太字）＋カテゴリタグ＋日付（10px・補助文字グレー）。影はなし。一覧はパソコン3列／スマホ1列。新しい作品には「New」バッジを左上に重ねます。</p>
-    <div class="card-grid">
-      <article class="card">
-        <span class="badge-new">New</span>
-        <div class="thumb"><div class="thumb-circle"></div><div class="thumb-bar"></div><div class="thumb-label">4:3</div></div>
-        <div class="card-title">編み物の作品タイトル</div>
-        <div class="card-tags"><span class="tag">編み物</span><span class="tag">ハンドメイド</span></div>
-        <div class="card-date">2026.11.05</div>
-      </article>
-      <article class="card">
-        <div class="thumb"><div class="thumb-circle"></div><div class="thumb-bar"></div><div class="thumb-label">4:3</div></div>
-        <div class="card-title">イラストの作品タイトル</div>
-        <div class="card-tags"><span class="tag">イラスト</span></div>
-        <div class="card-date">2026.10.20</div>
-      </article>
-      <article class="card">
-        <div class="thumb"><div class="thumb-circle"></div><div class="thumb-bar"></div><div class="thumb-label">4:3</div></div>
-        <div class="card-title">ロゴデザインの作品タイトル</div>
-        <div class="card-tags"><span class="tag">ロゴ</span><span class="tag">デザイン</span></div>
-        <div class="card-date">2026.09.12</div>
-      </article>
-    </div>
-
-    <h3 class="sub-head" id="c-tag">Tag / Badge</h3>
-    <p class="note" style="margin-bottom:16px;">タグはピル型、背景は背景グレー #F7F7F7、文字13px。選択中だけ #00FF00 背景＋黒文字になります。バッジは #00FF00 背景、黒文字10px太字、ピル型です。</p>
-    <div class="btn-row">
-      <span class="tag">通常のタグ</span>
-      <span class="tag selected">選択中のタグ</span>
-      <span class="badge-new" style="position:static;">New</span>
-    </div>
-
-    <h3 class="sub-head" id="c-divider">Divider</h3>
-    <p class="note">強い区切りは黒の線、弱い区切りは線グレー #E0E0E0 の2種類です。</p>
-    <hr class="divider-strong">
-    <p class="note">↑ 強い区切り（黒）／↓ 弱い区切り（線グレー）</p>
-    <hr class="divider-weak">
-
-    <h3 class="sub-head" id="c-heading">Heading</h3>
-    <p class="note" style="margin-bottom:16px;">セクション見出し（26px太字）の左に、ビビットグリーンの小さな丸印を付けます。このページの「基本要素」「コンポーネント」の見出しがその形です。</p>
-    <div class="section-head"><span class="mark"></span><h2>見出しのサンプル</h2></div>
-
-    <h3 class="sub-head" id="c-accordion">Accordion</h3>
-    <p class="note" style="margin-bottom:16px;">タイトル行＋右端に塗りアイコンの矢印（開くと下向き）。区切りは弱い線グレーです。プロフィールの詳細などを開閉するのに使います。</p>
-    <div class="accordion">
-      <details>
-        <summary>プロフィールの詳細
-          <svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 15.5l-6.5-6.5 1.8-1.8L12 11.9l4.7-4.7L18.5 9z"/></svg>
-        </summary>
-        <div class="acc-body">開くと中身が表示されます。経歴やスキルの詳しい説明などを、ここに入れます。</div>
-      </details>
-      <details>
-        <summary>よくある質問
-          <svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 15.5l-6.5-6.5 1.8-1.8L12 11.9l4.7-4.7L18.5 9z"/></svg>
-        </summary>
-        <div class="acc-body">質問と答えのペアを並べるのにも使えます。</div>
-      </details>
-    </div>
-
-    <h3 class="sub-head" id="c-list">List</h3>
-    <p class="note" style="margin-bottom:16px;">左に日付（10px・補助文字グレー）、右にタイトル（16px）。行の区切りは線グレーです。お知らせや実績の一覧に使います。</p>
-    <div class="list">
-      <div class="list-row"><div class="date">2026.11.05</div><div class="title">デザインシステムを公開しました</div></div>
-      <div class="list-row"><div class="date">2026.10.20</div><div class="title">ポートフォリオに新しい作品を追加しました</div></div>
-      <div class="list-row"><div class="date">2026.09.12</div><div class="title">お仕事の受付を開始しました</div></div>
-    </div>
-
-    <h3 class="sub-head" id="c-image">Image</h3>
-    <p class="note" style="margin-bottom:16px;">画像は比率4:3が基本、角丸16px。キャプションは10pxの補助文字グレーです。</p>
-    <figure class="img-demo">
-      <div class="frame"><div class="thumb-circle"></div></div>
-      <figcaption>画像のキャプション（説明文）はここに入ります。</figcaption>
-    </figure>
-  </section>
+  <div class="values">
+    <div class="value-item"><div class="value-word">スタイル</div><p>色・文字・角丸・影・余白・アイコンの決まり。</p><p style="margin-top:8px;"><a href="styles.html">スタイルのページを見る →</a></p></div>
+    <div class="value-item"><div class="value-word">コンポーネント</div><p>ヘッダーやボタンなど、よく使う部品の決まり。</p><p style="margin-top:8px;"><a href="components.html">コンポーネントのページを見る →</a></p></div>
+  </div>
 
 </main>
 </div>

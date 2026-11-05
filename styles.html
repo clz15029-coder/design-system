@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スタイル | WAKU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --black:#000000;
+    --green:#00FF00;
+    --gray-bg:#F7F7F7;
+    --gray-line:#E0E0E0;
+    --gray-text:#757575;
+    --shadow-offset: 4px 8px 0 rgba(0,0,0,0.1);
+    --radius-s:4px;
+    --radius-m:8px;
+    --radius-l:16px;
+    --radius-pill:999px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins','Noto Sans JP',sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    color:var(--black);
+    background:var(--white);
+  }
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  @media (min-width:768px){ .container{padding:0 48px;} }
+
+  /* ===== Header（このページのヘッダー自体がサンプル） ===== */
+  .site-header{
+    height:64px;background:var(--white);
+    border-bottom:2px solid var(--black);
+    position:sticky;top:0;z-index:10;
+  }
+  .site-header .container{height:64px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;letter-spacing:.02em;}
+  .logo-note{font-size:10px;color:var(--gray-text);margin-left:8px;}
+  .site-nav{display:flex;gap:24px;align-items:center;}
+  .site-nav a{color:var(--black);text-decoration:none;font-size:16px;display:inline-flex;align-items:center;gap:8px;}
+  .site-nav a .dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:none;}
+  .site-nav a.current .dot{display:inline-block;}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  @media (max-width:767px){
+    .site-nav{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{padding:64px 0 48px;}
+  .hero .en{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;letter-spacing:.08em;}
+  .hero h1{font-size:42px;font-weight:700;line-height:1.3;margin:8px 0 24px;}
+  .hero p{max-width:640px;}
+  .direction{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
+  .direction span{
+    background:var(--gray-bg);border-radius:var(--radius-pill);
+    padding:8px 16px;font-size:16px;font-weight:700;
+  }
+  .direction span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:8px;}
+
+  /* ===== Sections ===== */
+  section{padding:32px 0;}
+  .section-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .section-head .mark{width:12px;height:12px;border-radius:50%;background:var(--green);flex:none;}
+  .section-head h2{font-size:26px;font-weight:700;line-height:1.4;}
+  .section-lead{color:var(--black);margin-bottom:24px;}
+  .sub-head{font-size:16px;font-weight:700;margin:32px 0 16px;}
+  .note{font-size:10px;color:var(--gray-text);line-height:1.7;}
+
+  /* ===== Color ===== */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
+  .swatch{border:1px solid var(--gray-line);border-radius:var(--radius-l);overflow:hidden;}
+  .swatch .chip{height:64px;}
+  .swatch .meta{padding:8px 12px 12px;}
+  .swatch .name{font-weight:700;font-size:16px;}
+  .swatch .hex{font-family:'Poppins',sans-serif;font-size:13px;}
+  .swatch .role{font-size:10px;color:var(--gray-text);}
+
+  /* ===== Text Style ===== */
+  .type-list{border-top:1px solid var(--gray-line);}
+  .type-row{display:flex;align-items:baseline;gap:24px;padding:16px 0;border-bottom:1px solid var(--gray-line);flex-wrap:wrap;}
+  .type-row .spec{font-family:'Poppins',sans-serif;font-size:10px;color:var(--gray-text);width:140px;flex:none;}
+  .t-42{font-size:42px;font-weight:700;line-height:1.3;}
+  .t-26{font-size:26px;font-weight:700;line-height:1.4;}
+  .t-16{font-size:16px;}
+  .t-10{font-size:10px;color:var(--gray-text);}
+
+  /* ===== Corner Radius ===== */
+  .radius-grid{display:flex;gap:24px;flex-wrap:wrap;}
+  .radius-item{text-align:center;}
+  .radius-box{width:96px;height:96px;background:var(--gray-bg);border:2px solid var(--black);margin:0 auto 8px;}
+  .radius-item .r-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;}
+  .radius-item .r-use{font-size:10px;color:var(--gray-text);max-width:120px;}
+
+  /* ===== Shadow ===== */
+  .shadow-stage{background:var(--gray-bg);border-radius:var(--radius-l);padding:48px 24px;display:flex;justify-content:center;}
+  .shadow-demo{
+    background:var(--white);border:2px solid var(--black);border-radius:var(--radius-m);
+    padding:16px 24px;font-weight:700;box-shadow:var(--shadow-offset);
+  }
+
+  /* ===== Spacing ===== */
+  .spacing-list{display:flex;flex-direction:column;gap:8px;}
+  .spacing-row{display:flex;align-items:center;gap:16px;}
+  .spacing-bar{height:16px;background:var(--green);border:1px solid var(--black);flex:none;}
+  .spacing-row .s-label{font-family:'Poppins',sans-serif;font-size:13px;}
+
+  /* ===== Icons ===== */
+  .icon-row{display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+  .icon-item{text-align:center;}
+  .icon-item svg{display:block;margin:0 auto 4px;}
+  .icon-item .i-name{font-size:10px;color:var(--gray-text);}
+
+  /* ===== Button ===== */
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    height:48px;padding:0 24px;border-radius:var(--radius-pill);
+    font-family:'Poppins','Noto Sans JP',sans-serif;font-size:16px;font-weight:700;
+    cursor:pointer;text-decoration:none;transition:box-shadow .12s ease, transform .12s ease;
+  }
+  .btn:hover{box-shadow:var(--shadow-offset);}
+  .btn:active{box-shadow:none;transform:translate(2px,4px);}
+  .btn-primary{background:var(--green);color:var(--black);border:2px solid var(--black);}
+  .btn-secondary{background:var(--white);color:var(--black);border:2px solid var(--black);}
+  .btn-small{height:40px;padding:0 16px;font-size:13px;}
+  .btn-text{
+    background:none;border:none;color:var(--black);height:auto;padding:8px 0;
+    border-radius:0;font-weight:700;
+  }
+  .btn-text:hover{box-shadow:none;text-decoration:underline;}
+  .btn-text:active{transform:none;}
+  .btn-text .arrow{margin-left:8px;font-family:'Poppins',sans-serif;}
+
+  /* ===== Card ===== */
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:767px){ .card-grid{grid-template-columns:1fr;} }
+  .card{position:relative;}
+  .card .thumb{
+    aspect-ratio:4/3;border-radius:var(--radius-l);background:var(--gray-bg);
+    border:1px solid var(--gray-line);position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card .thumb .thumb-circle{width:64px;height:64px;border-radius:50%;background:var(--green);}
+  .card .thumb .thumb-bar{position:absolute;left:16px;bottom:16px;width:96px;height:12px;border-radius:var(--radius-pill);background:var(--black);}
+  .card .thumb .thumb-label{position:absolute;right:16px;top:16px;font-family:'Poppins',sans-serif;font-size:10px;color:var(--gray-text);}
+  .badge-new{
+    position:absolute;top:12px;left:12px;z-index:2;
+    background:var(--green);color:var(--black);
+    font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;
+    border-radius:var(--radius-pill);padding:4px 12px;border:1px solid var(--black);
+  }
+  .card .card-title{font-size:16px;font-weight:700;margin-top:16px;}
+  .card .card-tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
+  .card .card-date{font-size:10px;color:var(--gray-text);margin-top:8px;}
+
+  /* ===== Tag ===== */
+  .tag{
+    display:inline-block;background:var(--gray-bg);color:var(--black);
+    font-size:13px;border-radius:var(--radius-pill);padding:4px 12px;line-height:1.6;
+  }
+  .tag.selected{background:var(--green);font-weight:700;}
+
+  /* ===== Divider ===== */
+  .divider-strong{border:none;border-top:2px solid var(--black);margin:16px 0;}
+  .divider-weak{border:none;border-top:1px solid var(--gray-line);margin:16px 0;}
+
+  /* ===== Accordion ===== */
+  .accordion{border-top:1px solid var(--gray-line);}
+  .accordion details{border-bottom:1px solid var(--gray-line);}
+  .accordion summary{
+    list-style:none;cursor:pointer;padding:16px 0;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:16px;font-weight:700;
+  }
+  .accordion summary::-webkit-details-marker{display:none;}
+  .accordion summary .chev{flex:none;transition:transform .15s ease;}
+  .accordion details[open ] summary .chev{transform:rotate(180deg);}
+  .accordion .acc-body{padding:0 0 16px;}
+
+  /* ===== List ===== */
+  .list{border-top:1px solid var(--gray-line);}
+  .list-row{display:flex;gap:24px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--gray-line);}
+  .list-row .date{font-size:10px;color:var(--gray-text);font-family:'Poppins',sans-serif;flex:none;width:88px;}
+  .list-row .title{font-size:16px;}
+
+  /* ===== Image ===== */
+  .img-demo{max-width:480px;}
+  .img-demo .frame{
+    aspect-ratio:4/3;border-radius:var(--radius-l);background:var(--gray-bg);
+    border:1px solid var(--gray-line);display:flex;align-items:center;justify-content:center;
+  }
+  .img-demo .frame .thumb-circle{width:64px;height:64px;border-radius:50%;background:var(--green);}
+  .img-demo figcaption{font-size:10px;color:var(--gray-text);margin-top:8px;}
+
+  /* ===== Footer ===== */
+  .site-footer{background:var(--black);color:var(--white);margin-top:64px;padding:48px 0;}
+  .site-footer .logo{color:var(--white);}
+  .site-footer .foot-nav{display:flex;gap:24px;margin:16px 0;flex-wrap:wrap;}
+  .site-footer .foot-nav a{color:var(--white);text-decoration:none;font-size:16px;}
+  .site-footer .sns{display:flex;gap:16px;margin:16px 0;}
+  .site-footer .copy{font-size:10px;color:var(--white);opacity:.7;font-family:'Poppins',sans-serif;}
+
+  .hero-concept{font-size:26px;font-weight:700;margin:8px 0 16px;}
+  .vision{font-size:26px;font-weight:700;line-height:1.6;margin:16px 0;}
+  .values{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap;margin:16px 0;}
+  .value-item{flex:1;min-width:180px;background:var(--gray-bg);border-radius:var(--radius-l);padding:24px;}
+  .value-word{font-size:26px;font-weight:700;margin-bottom:8px;}
+  .value-item p{font-size:16px;margin:0;}
+  .value-arrow{align-self:center;font-weight:700;color:var(--gray-text);}
+  .principles{margin:16px 0;padding-left:24px;}
+  .principles li{font-size:16px;margin-bottom:8px;}
+
+  .container{max-width:1320px;}
+  .layout{display:flex;max-width:1320px;margin:0 auto;align-items:flex-start;}
+  .sidebar{width:240px;flex-shrink:0;position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto;padding:32px 8px 32px 48px;box-sizing:border-box;}
+  .content{flex:1;min-width:0;max-width:1080px;}
+  .side-nav{display:flex;flex-direction:column;gap:4px;}
+  .side-nav a{color:var(--black);text-decoration:none;font-size:13px;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:8px;}
+  .side-nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);opacity:0;flex-shrink:0;}
+  .side-nav a.active{font-weight:700;background:var(--gray-bg);}
+  .side-nav a.active::before{opacity:1;}
+  .side-nav .side-top{font-size:16px;font-weight:700;}
+  .side-group{font-size:13px;font-weight:700;color:var(--gray-text);margin:16px 0 4px;padding:0 12px;}
+  .site-nav a .dot{opacity:0;}
+  .site-nav a.current .dot{opacity:1;}
+  @media (max-width: 900px){
+    .layout{flex-direction:column;}
+    .sidebar{position:static;width:auto;max-height:none;overflow:visible;padding:16px 24px 0;}
+    .side-nav{flex-direction:row;flex-wrap:wrap;}
+    .side-group{width:100%;margin:8px 0 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container">
+    <div class="logo">WAKU<span class="logo-note">ロゴはSVGで制作予定（仮テキスト）</span></div>
+    <nav class="site-nav">
+      <a href="styles.html" class="current"><span class="dot"></span>スタイル</a>
+      <a href="components.html">コンポーネント</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><rect x="3" y="5" width="18" height="3" rx="1.5"/><rect x="3" y="11" width="18" height="3" rx="1.5"/><rect x="3" y="17" width="18" height="3" rx="1.5"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="side-nav">
+      <div class="side-group">スタイル</div>
+      <a href="#color" data-spy="color">Color</a>
+      <a href="#color-usage" data-spy="color-usage">Color の使い方</a>
+      <a href="#text-style" data-spy="text-style">Text Style</a>
+      <a href="#radius" data-spy="radius">Corner Radius</a>
+      <a href="#shadow" data-spy="shadow">Shadow</a>
+      <a href="#spacing" data-spy="spacing">Spacing</a>
+      <a href="#icons" data-spy="icons">Icons</a>
+    </nav>
+  </aside>
+  <main class="container content">
+
+  <!-- ===== 基本要素 ===== -->
+  <section id="foundation">
+    <div class="section-head"><span class="mark"></span><h2>基本要素</h2></div>
+    <p class="section-lead">すべてのデザインの土台になる決まりです。</p>
+
+    <h3 class="sub-head" id="color">Color</h3>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="chip" style="background:#FFFFFF;"></div>
+        <div class="meta"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">背景</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#000000;"></div>
+        <div class="meta"><div class="name">Black</div><div class="hex">#000000</div><div class="role">文字と線</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00FF00;"></div>
+        <div class="meta"><div class="name">Vivid Green</div><div class="hex">#00FF00</div><div class="role">アクセント（目印・面のみ。文字色には使わない）</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#F7F7F7;"></div>
+        <div class="meta"><div class="name">背景グレー</div><div class="hex">#F7F7F7</div><div class="role">白の代わりに敷く面</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#E0E0E0;"></div>
+        <div class="meta"><div class="name">線グレー</div><div class="hex">#E0E0E0</div><div class="role">弱い区切り線</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#757575;"></div>
+        <div class="meta"><div class="name">補助文字グレー</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div></div>
+      </div>
+    </div>
+
+    <h3 class="sub-head" id="color-usage">Color の使い方</h3>
+    <p class="note">配分の目安は、白（背景）がいちばん大きく、次に黒（文字と線）、グレーは補助、ビビットグリーンは面積を小さく「印」としてだけ使います。緑を本文の文字色には使いません。色を増やしたくなったら、まずグレーで足りないか考えます。</p>
+    <p class="note">やってはいけない例：緑の大きな背景、色の数を増やす、影を重ねる、本文をグレーで書く（補助文字グレーは日付や注釈だけ）。</p>
+
+    <h3 class="sub-head" id="text-style">Text Style</h3>
+    <p class="note" style="margin-bottom:16px;">和文は Noto Sans JP、欧文は Poppins（どちらも Google Fonts）。サイズは 10／16／26／42 の4段階で、比率は約1.618（黄金比）。行間は本文で1.7倍が目安です。</p>
+    <div class="type-list">
+      <div class="type-row"><div class="spec">42px / Bold</div><div class="t-42">ページタイトル</div></div>
+      <div class="type-row"><div class="spec">26px / Bold</div><div class="t-26">セクション見出し</div></div>
+      <div class="type-row"><div class="spec">16px / Regular</div><div class="t-16">本文です。カードのタイトルは、このサイズの太字で兼用します。</div></div>
+      <div class="type-row"><div class="spec">10px / Regular</div><div class="t-10">2026.11.05 日付やキャプションなどの補助テキスト</div></div>
+    </div>
+
+    <h3 class="sub-head" id="radius">Corner Radius</h3>
+    <p class="note" style="margin-bottom:16px;">角丸は「要素の短辺の長さ」で決めます。気分で変えないのがルールです。タグとボタンはピル型で統一します。</p>
+    <div class="radius-grid">
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:0;"></div>
+        <div class="r-name">0</div>
+        <div class="r-use">写真そのもの、区切り線</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:4px;"></div>
+        <div class="r-name">4</div>
+        <div class="r-use">バッジ、小さいボタンなど（短辺 〜20px）</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:8px;"></div>
+        <div class="r-name">8</div>
+        <div class="r-use">小さいカードなど（短辺 21〜64px）</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:16px;"></div>
+        <div class="r-name">16</div>
+        <div class="r-use">作品カードなど（短辺 65px〜）</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:999px;height:48px;margin-top:24px;"></div>
+        <div class="r-name">Pill</div>
+        <div class="r-use">タグ・チップ、ボタン専用</div>
+      </div>
+    </div>
+
+    <h3 class="sub-head" id="shadow">Shadow</h3>
+    <p class="note" style="margin-bottom:16px;">基本は影なし（フラット）で、区切りは線と余白で付けます。例外として、画面の上に浮く要素（ポップアップや浮いたボタン）だけ、黒 #000000 の10%透過・右下にずれる・ぼかしなしの影を1種類だけ使います（ずれ：右4px／下8px）。ボタンはホバーのときだけこの影が付きます。</p>
+    <div class="shadow-stage">
+      <div class="shadow-demo">浮いている要素のサンプル</div>
+    </div>
+
+    <h3 class="sub-head" id="spacing">Spacing</h3>
+    <p class="note" style="margin-bottom:16px;">余白の基本単位は8px。余白は8で割り切れる数字だけを使います。小さいパーツに限って、4で割り切れる数字（例：12px）も使えます。要素の中の余白は16、要素と要素の間は24、セクションの間は64が目安です。</p>
+    <div class="spacing-list">
+      <div class="spacing-row"><div class="spacing-bar" style="width:4px;"></div><div class="s-label">4</div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:8px;"></div><div class="s-label">8</div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:16px;"></div><div class="s-label">16</div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:24px;"></div><div class="s-label">24</div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:32px;"></div><div class="s-label">32</div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:48px;"></div><div class="s-label">48</div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:64px;"></div><div class="s-label">64</div></div>
+    </div>
+
+    <h3 class="sub-head" id="icons">Icons</h3>
+    <p class="note" style="margin-bottom:16px;">塗り（面）のアイコンで統一します。形は丸みのあるものを選び、サイズは24pxが基本、小さい所は20px。色は黒が基本で、目立たせたい所だけビビットグリーンにします。</p>
+    <div class="icon-row">
+      <div class="icon-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 21s-7.5-4.7-10-9.3C.3 8.6 2.2 4.5 6.1 4.5c2.2 0 3.7 1.2 4.6 2.7.4.7 2.2.7 2.6 0 .9-1.5 2.4-2.7 4.6-2.7 3.9 0 5.8 4.1 4.1 7.2C19.5 16.3 12 21 12 21z" transform="scale(0.92) translate(1,0)"/></svg>
+        <div class="i-name">お気に入り</div>
+      </div>
+      <div class="icon-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+        <div class="i-name">おすすめ</div>
+      </div>
+      <div class="icon-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 3l9 8h-3v9a1 1 0 0 1-1 1h-4v-6H11v6H7a1 1 0 0 1-1-1v-9H3z"/></svg>
+        <div class="i-name">ホーム</div>
+      </div>
+      <div class="icon-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#00FF00" stroke="#000" stroke-width="0.5"><circle cx="11" cy="11" r="7"/><rect x="15.5" y="15.5" width="7" height="3" rx="1.5" transform="rotate(45 19 17)"/></svg>
+        <div class="i-name">検索（アクセント色）</div>
+      </div>
+      <div class="icon-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M20 11H7.8l4.6-4.6L11 5l-7 7 7 7 1.4-1.4L7.8 13H20z" transform="scale(-1,1) translate(-24,0)"/></svg>
+        <div class="i-name">進む</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider-strong">
+
+</main>
+</div>
+
+<!-- ===== Footer ===== -->
+
+<footer class="site-footer" id="site-footer">
+  <div class="container">
+    <div class="logo">Miyu Sugiyama</div>
+    <nav class="foot-nav">
+      <a href="#">Works</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="sns">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5" fill="#000"/><circle cx="18" cy="6.2" r="1.6" fill="#000"/></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.2 2h6.4l4.4 5.9L18.9 2zm-1.1 18h1.7L7 3.7H5.2L17.8 20z" transform="scale(0.92) translate(1,1)"/></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 21s-7.5-4.7-10-9.3C.3 8.6 2.2 4.5 6.1 4.5c2.2 0 3.7 1.2 4.6 2.7.4.7 2.2.7 2.6 0 .9-1.5 2.4-2.7 4.6-2.7 3.9 0 5.8 4.1 4.1 7.2C19.5 16.3 12 21 12 21z" transform="scale(0.92) translate(1,0)"/></svg>
+    </div>
+    <div class="copy">© 2026 Miyu Sugiyama — Design System</div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var links = document.querySelectorAll('[data-spy]');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('data-spy')] = a; });
+  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+  var seen = {};
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+    var current = null;
+    targets.forEach(function(id){ if (seen[id]) current = current || id; });
+    // pick the first visible in document order among spy sections
+    var activeId = null;
+    targets.forEach(function(id){ if (seen[id] && !activeId) activeId = id; });
+    links.forEach(function(a){ a.classList.remove('active'); a.classList.remove('current'); });
+    if (activeId && map[activeId]) { map[activeId].classList.add('active'); }
+    // header: foundation group -> スタイル, components group -> コンポーネント
+    var compIds = ['components','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+    var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','icons'];
+    var headerKey = null;
+    if (activeId && compIds.indexOf(activeId) >= 0) headerKey = 'components';
+    else if (activeId && styleIds.indexOf(activeId) >= 0) headerKey = 'foundation';
+    if (headerKey && map[headerKey] && map[headerKey].closest('.site-nav')) map[headerKey].classList.add('current');
+  }, { rootMargin: '-80px 0px -60% 0px' });
+  targets.forEach(function(id){ var el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+</script>
+</body>
+</html>
