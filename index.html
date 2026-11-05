@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miyu Sugiyama Design System</title>
+<title>WAKU — デザインシステム</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -206,6 +206,16 @@
   .site-footer .foot-nav a{color:var(--white);text-decoration:none;font-size:16px;}
   .site-footer .sns{display:flex;gap:16px;margin:16px 0;}
   .site-footer .copy{font-size:10px;color:var(--white);opacity:.7;font-family:'Poppins',sans-serif;}
+
+  .hero-concept{font-size:26px;font-weight:700;margin:8px 0 16px;}
+  .vision{font-size:26px;font-weight:700;line-height:1.6;margin:16px 0;}
+  .values{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap;margin:16px 0;}
+  .value-item{flex:1;min-width:180px;background:var(--gray-bg);border-radius:var(--radius-l);padding:24px;}
+  .value-word{font-size:26px;font-weight:700;margin-bottom:8px;}
+  .value-item p{font-size:16px;margin:0;}
+  .value-arrow{align-self:center;font-weight:700;color:var(--gray-text);}
+  .principles{margin:16px 0;padding-left:24px;}
+  .principles li{font-size:16px;margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -213,7 +223,7 @@
 <!-- ===== Header ===== -->
 <header class="site-header">
   <div class="container">
-    <div class="logo">Miyu Sugiyama<span class="logo-note">ロゴはSVGで制作予定（仮テキスト）</span></div>
+    <div class="logo">WAKU<span class="logo-note">ロゴはSVGで制作予定（仮テキスト）</span></div>
     <nav class="site-nav">
       <a href="#" class="current"><span class="dot"></span>Works</a>
       <a href="#">About</a>
@@ -229,15 +239,48 @@
 
   <!-- ===== Hero ===== -->
   <div class="hero">
-    <div class="en">DESIGN SYSTEM</div>
-    <h1>デザインシステム</h1>
-    <p>ポートフォリオを作るときに、デザインのテイストで迷わないための自分の決まりです。色・文字・余白などの「基本要素」と、ヘッダーやボタンなどの「コンポーネント」をまとめています。このページ自体も、このシステムのルールで作られています。</p>
+    <div class="en">WAKU DESIGN SYSTEM</div>
+    <h1>WAKU</h1>
+    <p class="hero-concept">迷わず作れる、わたしの決まりごと。</p>
+    <p>WAKUは、杉山弥優のデザインシステムです。「枠（わく）」があるから迷わず作れて、その中では自由に遊べる。ワクワクする気持ちも込めた名前です。色・文字・余白などの「基本要素」と、ヘッダーやボタンなどの「コンポーネント」をまとめています。このページ自体も、このシステムのルールで作られています。</p>
     <div class="direction">
       <span>シンプル</span>
       <span>遊び心</span>
       <span>かわいい</span>
     </div>
   </div>
+
+  <hr class="divider-strong">
+
+  <!-- ===== ブランドの核 ===== -->
+  <section id="brand">
+    <div class="section-head"><span class="mark"></span><h2>ブランドの核</h2></div>
+    <p class="section-lead">WAKUの土台にある考え方です。デザインで迷ったときは、ここに戻ります。</p>
+
+    <h3 class="sub-head">理念（Vision）</h3>
+    <p class="vision">毎日を、わたしの見方で切りとる。少しの遊び心を添えて。</p>
+    <p class="note">世の中の複雑なものを、自分の観点でディフォルメして切り取る。その作業を、わかりやすく整理して支えるのがデザインの役割です。対象は大きなことではなく、毎日の暮らしです。</p>
+
+    <h3 class="sub-head">価値観（Values）</h3>
+    <div class="values">
+      <div class="value-item"><div class="value-word">きりとる</div><p>複雑な世界から、自分の観点で大事な部分を切り取る。</p></div>
+      <div class="value-arrow">→</div>
+      <div class="value-item"><div class="value-word">ととのえる</div><p>切り取ったものを、わかりやすく整理する。</p></div>
+      <div class="value-arrow">→</div>
+      <div class="value-item"><div class="value-word">つくる</div><p>作品やデザインとして形にする。届いた先で、また新しい「きりとる」が始まります。</p></div>
+    </div>
+
+    <h3 class="sub-head">デザイン原則</h3>
+    <ol class="principles">
+      <li>色は少なく。緑は「印」にだけ使う（本文には使わない）</li>
+      <li>余白を先に決める。詰め込まない</li>
+      <li>かわいさは、1か所に少しだけ</li>
+      <li>迷ったら、シンプルな方を選ぶ</li>
+    </ol>
+
+    <h3 class="sub-head">文章のトーン</h3>
+    <p class="note">短く、やさしく。専門用語は少なめに。堅い言い切りより柔らかい言い方を選びます。でも、内容は具体的に書きます。</p>
+  </section>
 
   <hr class="divider-strong">
 
@@ -273,6 +316,10 @@
         <div class="meta"><div class="name">補助文字グレー</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div></div>
       </div>
     </div>
+
+    <h3 class="sub-head">Color の使い方</h3>
+    <p class="note">配分の目安は、白（背景）がいちばん大きく、次に黒（文字と線）、グレーは補助、ビビットグリーンは面積を小さく「印」としてだけ使います。緑を本文の文字色には使いません。色を増やしたくなったら、まずグレーで足りないか考えます。</p>
+    <p class="note">やってはいけない例：緑の大きな背景、色の数を増やす、影を重ねる、本文をグレーで書く（補助文字グレーは日付や注釈だけ）。</p>
 
     <h3 class="sub-head">Text Style</h3>
     <p class="note" style="margin-bottom:16px;">和文は Noto Sans JP、欧文は Poppins（どちらも Google Fonts）。サイズは 10／16／26／42 の4段階で、比率は約1.618（黄金比）。行間は本文で1.7倍が目安です。</p>
@@ -363,6 +410,7 @@
   <section id="components">
     <div class="section-head"><span class="mark"></span><h2>コンポーネント</h2></div>
     <p class="section-lead">ポートフォリオでよく使う部品の決まりです。すべて実際の表示サンプルです。</p>
+    <p class="note">Figmaファイルには全28種のコンポーネントがあります：見出し／ボタン／ボックス／ローディング／リスト／吹き出し／アコーディオンメニュー／検索フォーム／セレクトボックス／パンくずリスト／テキストボックス／ツールチップ／Q&amp;Aリスト／引用ボックス／レーダーチャート／「続きを読む」ボタン／タブ／トグルボタン／チェックボックス／フッター／付箋／ページネーション／円グラフ／ラジオボタン／目次／棒グラフ／モーダルウィンドウ／タイムライン。このページでは代表的なものを実際の表示で紹介します。</p>
 
     <h3 class="sub-head">Header</h3>
     <p class="note">このページ上部のヘッダー自体がサンプルです。背景は白、下の線は黒の細い線、高さ64px。左にロゴ（SVGで制作予定、今は仮テキスト）、右にメニュー（Works／About／Contact）。現在地のメニューにはビビットグリーンの小さな丸印が付きます。スマホではメニューを塗りアイコンのボタンに集約します。</p>
