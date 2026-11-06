@@ -182,9 +182,9 @@
   .card .thumb .thumb-label{position:absolute;right:16px;top:16px;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--waku-text-secondary);}
   .badge-new{
     position:absolute;top:12px;left:12px;z-index:2;
-    background:var(--waku-accent);color:var(--waku-text-primary);
+    background:linear-gradient(180deg,#E9FFE9,#CFFFCF);color:var(--waku-text-primary);
     font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;
-    border-radius:var(--waku-radius-pill);padding:4px 12px;border:1px solid var(--waku-border-strong);
+    border-radius:var(--waku-radius-pill);padding:4px 12px;border:1px solid var(--waku-color-green);
   }
   .card .card-title{font-size:16px;font-weight:700;margin-top:16px;}
   .card .card-tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
@@ -193,9 +193,58 @@
   /* ===== Tag ===== */
   .tag{
     display:inline-block;background:var(--waku-surface-secondary);color:var(--waku-text-primary);
-    font-size:14px;border-radius:var(--waku-radius-pill);padding:4px 12px;line-height:1.6;
+    font-size:var(--waku-font-size-caption);border:1px solid transparent;
+    border-radius:var(--waku-radius-pill);padding:var(--waku-space-4) var(--waku-space-12);line-height:1.6;
   }
-  .tag.selected{background:var(--waku-accent);font-weight:700;}
+  /* 選択中：薄い緑のグラデーション＋緑の縁取り。太さは通常と変えない */
+  .tag.selected{
+    background:linear-gradient(180deg,#E9FFE9,#CFFFCF);
+    border-color:var(--waku-color-green);
+  }
+  /* Tag（ラインタイプ）：下線で選択中を示す */
+  .tag-line-group{display:flex;gap:var(--waku-space-24);flex-wrap:wrap;border-bottom:1px solid var(--waku-border-default);}
+  .tag-line{
+    font-size:var(--waku-font-size-caption);color:var(--waku-text-secondary);line-height:1.6;
+    padding:var(--waku-space-8) var(--waku-space-4);margin-bottom:-1px;
+    border-bottom:2px solid transparent;cursor:pointer;
+  }
+  .tag-line.selected{color:var(--waku-text-primary);border-bottom-color:var(--waku-border-strong);}
+
+  /* ===== Loader（仮デザイン） ===== */
+  .loader-demo{display:flex;align-items:center;gap:var(--waku-space-16);}
+  .loader{display:inline-flex;gap:var(--waku-space-8);align-items:center;}
+  .loader .dot{
+    width:12px;height:12px;border-radius:50%;flex:none;
+    background:var(--waku-accent);border:1px solid var(--waku-border-strong);
+    animation:waku-loader 1s ease-in-out infinite;
+  }
+  .loader .dot:nth-child(2){animation-delay:.15s;}
+  .loader .dot:nth-child(3){animation-delay:.3s;}
+  @keyframes waku-loader{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ .loader .dot{animation:none;} }
+
+  /* ===== Pager ===== */
+  .pager{display:flex;gap:var(--waku-space-8);align-items:center;flex-wrap:wrap;}
+  .pager a{
+    min-width:40px;height:40px;padding:0 var(--waku-space-12);
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--waku-surface-primary);color:var(--waku-text-primary);
+    border:1px solid var(--waku-border-default);border-radius:var(--waku-radius-pill);
+    font-size:var(--waku-font-size-body-sm);text-decoration:none;line-height:1.4;
+  }
+  .pager a:hover{text-decoration:underline;}
+  .pager a.current{
+    background:linear-gradient(180deg,#E9FFE9,#CFFFCF);
+    border-color:var(--waku-color-green);
+  }
+
+  /* ===== Table ===== */
+  .waku-table{width:100%;border-collapse:collapse;font-size:var(--waku-font-size-body-sm);}
+  .waku-table th,.waku-table td{
+    text-align:left;padding:var(--waku-space-12) var(--waku-space-16);
+    border-bottom:1px solid var(--waku-border-default);line-height:1.6;
+  }
+  .waku-table th{background:var(--waku-surface-secondary);font-weight:700;}
 
   /* ===== Divider ===== */
   .divider-strong{border:none;border-top:2px solid var(--waku-border-strong);margin:16px 0;}
@@ -289,15 +338,18 @@
   <aside class="sidebar">
     <nav class="side-nav">
       <div class="side-group">コンポーネント</div>
-      <a href="#c-header" data-spy="c-header">Header</a>
+      <a href="#c-accordion" data-spy="c-accordion">Accordion</a>
       <a href="#c-button" data-spy="c-button">Button</a>
       <a href="#c-card" data-spy="c-card">Card</a>
-      <a href="#c-tag" data-spy="c-tag">Tag / Badge</a>
       <a href="#c-divider" data-spy="c-divider">Divider</a>
+      <a href="#c-header" data-spy="c-header">Header</a>
       <a href="#c-heading" data-spy="c-heading">Heading</a>
-      <a href="#c-accordion" data-spy="c-accordion">Accordion</a>
-      <a href="#c-list" data-spy="c-list">List</a>
       <a href="#c-image" data-spy="c-image">Image</a>
+      <a href="#c-list" data-spy="c-list">List</a>
+      <a href="#c-loader" data-spy="c-loader">Loader</a>
+      <a href="#c-pager" data-spy="c-pager">Pager</a>
+      <a href="#c-table" data-spy="c-table">Table</a>
+      <a href="#c-tag" data-spy="c-tag">Tag / Badge</a>
       <a href="#site-footer">Footer</a>
     </nav>
   </aside>
@@ -309,8 +361,22 @@
     <p class="section-lead">ポートフォリオでよく使う部品の決まりです。すべて実際の表示サンプルです。</p>
     <p class="note">Figmaファイルには全28種のコンポーネントがあります：見出し／ボタン／ボックス／ローディング／リスト／吹き出し／アコーディオンメニュー／検索フォーム／セレクトボックス／パンくずリスト／テキストボックス／ツールチップ／Q&amp;Aリスト／引用ボックス／レーダーチャート／「続きを読む」ボタン／タブ／トグルボタン／チェックボックス／フッター／付箋／ページネーション／円グラフ／ラジオボタン／目次／棒グラフ／モーダルウィンドウ／タイムライン。このページでは代表的なものを実際の表示で紹介します。</p>
 
-    <h3 class="sub-head" id="c-header">Header</h3>
-    <p class="note">このページ上部のヘッダー自体がサンプルです。背景は白、下の線は黒の細い線、高さ64px。左にロゴ（SVGで制作予定、今は仮テキスト）、右にメニュー。現在地のメニューにはビビットグリーンの小さな丸印が付きます。メニューの項目はサイトごとに決めます（ポートフォリオでは Works／About／Contact、このドキュメントサイトでは スタイル／コンポーネント）。スマホではメニューを塗りアイコンのボタンに集約します。</p>
+    <h3 class="sub-head" id="c-accordion">Accordion</h3>
+    <p class="note" style="margin-bottom:16px;">タイトル行＋右端に塗りアイコンの矢印（開くと下向き）。区切りは弱い線グレーです。プロフィールの詳細などを開閉するのに使います。</p>
+    <div class="accordion">
+      <details>
+        <summary>プロフィールの詳細
+          <svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 15.5l-6.5-6.5 1.8-1.8L12 11.9l4.7-4.7L18.5 9z"/></svg>
+        </summary>
+        <div class="acc-body">開くと中身が表示されます。経歴やスキルの詳しい説明などを、ここに入れます。</div>
+      </details>
+      <details>
+        <summary>よくある質問
+          <svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 15.5l-6.5-6.5 1.8-1.8L12 11.9l4.7-4.7L18.5 9z"/></svg>
+        </summary>
+        <div class="acc-body">質問と答えのペアを並べるのにも使えます。</div>
+      </details>
+    </div>
 
     <h3 class="sub-head" id="c-button">Button</h3>
     <p class="note" style="margin-bottom:16px;">形はピル型。高さ48px（小さい用は40px）、横の余白24px。ホバーで少し上に跳ね上がって影（黒10%・右下ずれ・ぼかしなし）が付き、押すと影が消えて少し沈みます。</p>
@@ -345,40 +411,25 @@
       </article>
     </div>
 
-    <h3 class="sub-head" id="c-tag">Tag / Badge</h3>
-    <p class="note" style="margin-bottom:16px;">タグはピル型、背景は背景グレー #F7F7F7、文字13px。選択中だけ #00FF00 背景＋黒文字になります。バッジは #00FF00 背景、黒文字10px太字、ピル型です。</p>
-    <div class="btn-row">
-      <span class="tag">通常のタグ</span>
-      <span class="tag selected">選択中のタグ</span>
-      <span class="badge-new" style="position:static;">New</span>
-    </div>
-
     <h3 class="sub-head" id="c-divider">Divider</h3>
     <p class="note">強い区切りは黒の線、弱い区切りは線グレー #E0E0E0 の2種類です。</p>
     <hr class="divider-strong">
     <p class="note">↑ 強い区切り（黒）／↓ 弱い区切り（線グレー）</p>
     <hr class="divider-weak">
 
+    <h3 class="sub-head" id="c-header">Header</h3>
+    <p class="note">このページ上部のヘッダー自体がサンプルです。背景は白、下の線は黒の細い線、高さ64px。左にロゴ（SVGで制作予定、今は仮テキスト）、右にメニュー。現在地のメニューにはビビットグリーンの小さな丸印が付きます。メニューの項目はサイトごとに決めます（ポートフォリオでは Works／About／Contact、このドキュメントサイトでは スタイル／コンポーネント）。スマホではメニューを塗りアイコンのボタンに集約します。</p>
+
     <h3 class="sub-head" id="c-heading">Heading</h3>
     <p class="note" style="margin-bottom:16px;">セクション見出し（26px太字）の左に、ビビットグリーンの小さな丸印を付けます。このページの「基本要素」「コンポーネント」の見出しがその形です。</p>
     <div class="section-head"><span class="mark"></span><h2>見出しのサンプル</h2></div>
 
-    <h3 class="sub-head" id="c-accordion">Accordion</h3>
-    <p class="note" style="margin-bottom:16px;">タイトル行＋右端に塗りアイコンの矢印（開くと下向き）。区切りは弱い線グレーです。プロフィールの詳細などを開閉するのに使います。</p>
-    <div class="accordion">
-      <details>
-        <summary>プロフィールの詳細
-          <svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 15.5l-6.5-6.5 1.8-1.8L12 11.9l4.7-4.7L18.5 9z"/></svg>
-        </summary>
-        <div class="acc-body">開くと中身が表示されます。経歴やスキルの詳しい説明などを、ここに入れます。</div>
-      </details>
-      <details>
-        <summary>よくある質問
-          <svg class="chev" width="24" height="24" viewBox="0 0 24 24" fill="#000"><path d="M12 15.5l-6.5-6.5 1.8-1.8L12 11.9l4.7-4.7L18.5 9z"/></svg>
-        </summary>
-        <div class="acc-body">質問と答えのペアを並べるのにも使えます。</div>
-      </details>
-    </div>
+    <h3 class="sub-head" id="c-image">Image</h3>
+    <p class="note" style="margin-bottom:16px;">画像は比率4:3が基本、角丸16px。キャプションは10pxの補助文字グレーです。</p>
+    <figure class="img-demo">
+      <div class="frame"><div class="thumb-circle"></div></div>
+      <figcaption>画像のキャプション（説明文）はここに入ります。</figcaption>
+    </figure>
 
     <h3 class="sub-head" id="c-list">List</h3>
     <p class="note" style="margin-bottom:16px;">左に日付（10px・補助文字グレー）、右にタイトル（16px）。行の区切りは線グレーです。お知らせや実績の一覧に使います。</p>
@@ -388,12 +439,52 @@
       <div class="list-row"><div class="date">2026.09.12</div><div class="title">お仕事の受付を開始しました</div></div>
     </div>
 
-    <h3 class="sub-head" id="c-image">Image</h3>
-    <p class="note" style="margin-bottom:16px;">画像は比率4:3が基本、角丸16px。キャプションは10pxの補助文字グレーです。</p>
-    <figure class="img-demo">
-      <div class="frame"><div class="thumb-circle"></div></div>
-      <figcaption>画像のキャプション（説明文）はここに入ります。</figcaption>
-    </figure>
+    <h3 class="sub-head" id="c-loader">Loader</h3>
+    <p class="note" style="margin-bottom:16px;">読み込み中であることを伝える部品です。これは仮のデザインです。あとからSVGイラストを足して遊び心を加える予定です。今はWAKUの緑のドット3つが順番に跳ねる、CSSだけの軽いアニメーションにしています。</p>
+    <div class="loader-demo">
+      <span class="loader" role="img" aria-label="読み込み中"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      <span class="note">読み込み中…</span>
+    </div>
+
+    <h3 class="sub-head" id="c-pager">Pager</h3>
+    <p class="note" style="margin-bottom:16px;">ページ送りです。「前へ」＋ページ番号＋「次へ」が揃ったシンプルな形です。今いるページは、タグの選択中と同じ薄い緑のグラデーション＋緑の縁取りで示します。お知らせ一覧など、項目が増えたときに使います。</p>
+    <nav class="pager" aria-label="ページ送り">
+      <a href="#">前へ</a>
+      <a href="#" class="current" aria-current="page">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">次へ</a>
+    </nav>
+
+    <h3 class="sub-head" id="c-table">Table</h3>
+    <p class="note" style="margin-bottom:16px;">シンプルな表です。見出し行は背景グレー #F7F7F7、区切りは線グレー #E0E0E0 の細い線だけ、余白は少し広めに取ります。</p>
+    <table class="waku-table">
+      <thead>
+        <tr><th>作品名</th><th>カテゴリ</th><th>公開日</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>編み物の作品タイトル</td><td>編み物</td><td>2026.11.05</td></tr>
+        <tr><td>イラストの作品タイトル</td><td>イラスト</td><td>2026.10.20</td></tr>
+        <tr><td>ロゴデザインの作品タイトル</td><td>ロゴ</td><td>2026.09.12</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head" id="c-tag">Tag / Badge</h3>
+    <p class="note" style="margin-bottom:16px;">タグの文字は12pxで、選択中でも太さは変えません。タイプは2種類あります。ボタンタイプはピル型で、通常は背景グレー #F7F7F7、選択中は薄い緑のグラデーション（#E9FFE9 → #CFFFCF）の地に緑 #00FF00 の縁取り＋黒文字です。ラインタイプは下線で選択中を示します（選択中は黒の2px線）。バッジ（New）も、選択中タグと同じ薄い緑のグラデーション＋緑の縁取りに揃えています。</p>
+    <p class="note" style="margin-bottom:8px;">ボタンタイプ</p>
+    <div class="btn-row">
+      <span class="tag">通常のタグ</span>
+      <span class="tag">編み物</span>
+      <span class="tag selected">選択中のタグ</span>
+      <span class="badge-new" style="position:static;">New</span>
+    </div>
+    <p class="note" style="margin:24px 0 8px;">ラインタイプ</p>
+    <div class="tag-line-group">
+      <span class="tag-line selected">すべて</span>
+      <span class="tag-line">編み物</span>
+      <span class="tag-line">イラスト</span>
+      <span class="tag-line">ロゴ</span>
+    </div>
   </section>
 
 </main>
@@ -424,7 +515,7 @@
   var links = document.querySelectorAll('[data-spy]');
   var map = {};
   links.forEach(function(a){ map[a.getAttribute('data-spy')] = a; });
-  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-accordion','c-button','c-card','c-divider','c-header','c-heading','c-image','c-list','c-loader','c-pager','c-table','c-tag'];
   var seen = {};
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
@@ -436,7 +527,7 @@
     links.forEach(function(a){ a.classList.remove('active'); a.classList.remove('current'); });
     if (activeId && map[activeId]) { map[activeId].classList.add('active'); }
     // header: foundation group -> スタイル, components group -> コンポーネント
-    var compIds = ['components','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+    var compIds = ['components','c-accordion','c-button','c-card','c-divider','c-header','c-heading','c-image','c-list','c-loader','c-pager','c-table','c-tag'];
     var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','icons'];
     var headerKey = null;
     if (activeId && compIds.indexOf(activeId) >= 0) headerKey = 'components';
