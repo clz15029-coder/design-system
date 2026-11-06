@@ -61,6 +61,8 @@
     --waku-space-32:32px;
     --waku-space-48:48px;
     --waku-space-64:64px;
+    /* コンテンツ幅 */
+    --waku-content-max:1080px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -71,7 +73,7 @@
     color:var(--waku-text-primary);
     background:var(--waku-surface-primary);
   }
-  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 24px;}
   @media (min-width:768px){ .container{padding:0 48px;} }
 
   /* ===== Header（このページのヘッダー自体がサンプル） ===== */
@@ -165,6 +167,20 @@
   .spacing-row{display:flex;align-items:center;gap:16px;}
   .spacing-bar{height:16px;background:var(--waku-accent);border:1px solid var(--waku-border-strong);flex:none;}
   .spacing-row .s-label{font-family:'Noto Sans JP',sans-serif;font-size:14px;}
+
+  /* ===== Content Width ===== */
+  .cw-demo{display:flex;border:1px solid var(--waku-border-default);border-radius:var(--waku-radius-md);overflow:hidden;}
+  .cw-pad{
+    flex:0 0 20%;background:var(--waku-surface-secondary);color:var(--waku-text-secondary);
+    font-size:12px;line-height:1.6;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:var(--waku-space-24) var(--waku-space-8);
+  }
+  .cw-inner{
+    flex:1;border-left:1px dashed var(--waku-border-default);border-right:1px dashed var(--waku-border-default);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:var(--waku-space-24) var(--waku-space-8);font-weight:700;
+  }
+  .cw-inner .cw-max{font-size:12px;color:var(--waku-text-secondary);font-weight:400;margin-top:4px;}
 
   /* ===== Icons ===== */
   .icon-row{display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
@@ -302,7 +318,7 @@
   .container{max-width:1320px;}
   .layout{display:flex;max-width:1320px;margin:0 auto;align-items:flex-start;}
   .sidebar{width:240px;flex-shrink:0;position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto;padding:32px 8px 32px 48px;box-sizing:border-box;}
-  .content{flex:1;min-width:0;max-width:1080px;}
+  .content{flex:1;min-width:0;max-width:var(--waku-content-max);}
   .side-nav{display:flex;flex-direction:column;gap:4px;}
   .side-nav a{color:var(--waku-text-primary);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:8px;}
   .side-nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--waku-accent);opacity:0;flex-shrink:0;}
@@ -347,6 +363,7 @@
       <a href="#radius" data-spy="radius">Corner Radius</a>
       <a href="#shadow" data-spy="shadow">Shadow</a>
       <a href="#spacing" data-spy="spacing">Spacing</a>
+      <a href="#content-width" data-spy="content-width">Content Width</a>
       <a href="#icons" data-spy="icons">Icons</a>
     </nav>
   </aside>
@@ -709,6 +726,49 @@
       </div>
     </div>
 
+    <h3 class="sub-head" id="content-width">Content Width</h3>
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button type="button" class="tab-btn active" data-tab-target="design">Design</button>
+        <button type="button" class="tab-btn" data-tab-target="token">Token</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="design">
+    <p class="note" style="margin-bottom:16px;">コンテンツの幅の決まりです。画面が広くても、コンテンツは最大1080pxまでで中央に寄せます。左右の余白は、モバイル（768px未満）で24px、PC（768px以上）で48pxです。</p>
+    <div class="cw-demo">
+      <div class="cw-pad">左右の余白<br>24px（モバイル）<br>48px（PC）</div>
+      <div class="cw-inner">コンテンツ<span class="cw-max">最大 1080px</span></div>
+      <div class="cw-pad">左右の余白<br>24px（モバイル）<br>48px（PC）</div>
+    </div>
+    <p class="note" style="margin-top:16px;">左右の余白は Spacing のトークン（--waku-space-24 / --waku-space-48）をそのまま使います。新しい数字は作りません。</p>
+      </div>
+      <div class="tab-panel" data-tab-panel="token" hidden>
+        <h4 class="token-cat">コンテンツ幅</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-content-max</td><td class="t-val">1080px</td><td>コンテンツの最大幅</td></tr>
+          <tr><td class="t-name">--waku-space-24</td><td class="t-val">24px</td><td>ページ左右の余白（モバイル）</td></tr>
+          <tr><td class="t-name">--waku-space-48</td><td class="t-val">48px</td><td>ページ左右の余白（PC・768px以上）</td></tr>
+        </table>
+        <p class="note" style="margin-bottom:16px;">左右の余白には専用トークンは作らず、余白のトークン（--waku-space-24 / --waku-space-48）を使います。</p>
+
+        <h4 class="token-cat">コード</h4>
+        <pre class="token-code">:root{
+  /* コンテンツ幅 */
+  --waku-content-max:1080px;
+}
+
+/* 使い方の例 */
+.container{
+  max-width:var(--waku-content-max);
+  margin:0 auto;
+  padding:0 var(--waku-space-24);
+}
+@media (min-width:768px){
+  .container{padding:0 var(--waku-space-48);}
+}</pre>
+      </div>
+    </div>
+
     <h3 class="sub-head" id="icons">Icons</h3>
     <p class="note" style="margin-bottom:16px;">塗り（面）のアイコンで統一します。形は丸みのあるものを選び、サイズは24pxが基本、小さい所は20px。色は黒が基本で、目立たせたい所だけビビットグリーンにします。</p>
     <div class="icon-row">
@@ -765,7 +825,7 @@
   var links = document.querySelectorAll('[data-spy]');
   var map = {};
   links.forEach(function(a){ map[a.getAttribute('data-spy')] = a; });
-  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','content-width','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
   var seen = {};
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
@@ -778,7 +838,7 @@
     if (activeId && map[activeId]) { map[activeId].classList.add('active'); }
     // header: foundation group -> スタイル, components group -> コンポーネント
     var compIds = ['components','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
-    var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','icons'];
+    var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','content-width','icons'];
     var headerKey = null;
     if (activeId && compIds.indexOf(activeId) >= 0) headerKey = 'components';
     else if (activeId && styleIds.indexOf(activeId) >= 0) headerKey = 'foundation';
