@@ -9,17 +9,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --white:#FFFFFF;
-    --black:#000000;
-    --green:#00FF00;
-    --gray-bg:#F7F7F7;
-    --gray-line:#E0E0E0;
-    --gray-text:#757575;
-    --shadow-offset: 4px 8px 0 rgba(0,0,0,0.1);
-    --radius-s:4px;
-    --radius-m:8px;
-    --radius-l:16px;
-    --radius-pill:999px;
+    /* 色：プリミティブ（元の色） */
+    --waku-color-white:#FFFFFF;
+    --waku-color-black:#000000;
+    --waku-color-green:#00FF00;
+    --waku-color-gray-50:#F7F7F7;
+    --waku-color-gray-200:#E0E0E0;
+    --waku-color-gray-500:#757575;
+    /* 色：セマンティクス（意味の名前。使うのはこっち） */
+    --waku-surface-primary:var(--waku-color-white);
+    --waku-surface-secondary:var(--waku-color-gray-50);
+    --waku-text-primary:var(--waku-color-black);
+    --waku-text-secondary:var(--waku-color-gray-500);
+    --waku-border-default:var(--waku-color-gray-200);
+    --waku-border-strong:var(--waku-color-black);
+    --waku-accent:var(--waku-color-green);
+    /* 文字 */
+    --waku-font-ja:"Noto Sans JP",sans-serif;
+    --waku-font-en:"Poppins",sans-serif;
+    --waku-font-size-display:32px;
+    --waku-font-size-heading:24px;
+    --waku-font-size-body:16px;
+    --waku-font-size-body-sm:14px;
+    --waku-font-size-caption:12px;
+    --waku-line-height-body:1.7;
+    /* 角丸 */
+    --waku-radius-none:0;
+    --waku-radius-sm:4px;
+    --waku-radius-md:8px;
+    --waku-radius-lg:16px;
+    --waku-radius-pill:999px;
+    /* 影 */
+    --waku-shadow-floating:4px 8px 0 rgba(0,0,0,0.1);
+    /* 余白 */
+    --waku-space-4:4px;
+    --waku-space-8:8px;
+    --waku-space-12:12px;
+    --waku-space-16:16px;
+    --waku-space-24:24px;
+    --waku-space-32:32px;
+    --waku-space-48:48px;
+    --waku-space-64:64px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -27,24 +57,24 @@
     font-family:'Poppins','Noto Sans JP',sans-serif;
     font-size:16px;
     line-height:1.7;
-    color:var(--black);
-    background:var(--white);
+    color:var(--waku-text-primary);
+    background:var(--waku-surface-primary);
   }
   .container{max-width:1080px;margin:0 auto;padding:0 24px;}
   @media (min-width:768px){ .container{padding:0 48px;} }
 
   /* ===== Header（このページのヘッダー自体がサンプル） ===== */
   .site-header{
-    height:64px;background:var(--white);
-    border-bottom:2px solid var(--black);
+    height:64px;background:var(--waku-surface-primary);
+    border-bottom:2px solid var(--waku-border-strong);
     position:sticky;top:0;z-index:10;
   }
   .site-header .container{height:64px;display:flex;align-items:center;justify-content:space-between;}
   .logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;letter-spacing:.02em;}
-  .logo-note{font-size:12px;color:var(--gray-text);margin-left:8px;}
+  .logo-note{font-size:12px;color:var(--waku-text-secondary);margin-left:8px;}
   .site-nav{display:flex;gap:24px;align-items:center;}
-  .site-nav a{color:var(--black);text-decoration:none;font-size:16px;display:inline-flex;align-items:center;gap:8px;}
-  .site-nav a .dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:none;}
+  .site-nav a{color:var(--waku-text-primary);text-decoration:none;font-size:16px;display:inline-flex;align-items:center;gap:8px;}
+  .site-nav a .dot{width:8px;height:8px;border-radius:50%;background:var(--waku-accent);display:none;}
   .site-nav a.current .dot{display:inline-block;}
   .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
   @media (max-width:767px){
@@ -59,80 +89,93 @@
   .hero p{max-width:640px;}
   .direction{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
   .direction span{
-    background:var(--gray-bg);border-radius:var(--radius-pill);
+    background:var(--waku-surface-secondary);border-radius:var(--waku-radius-pill);
     padding:8px 16px;font-size:16px;font-weight:700;
   }
-  .direction span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:8px;}
+  .direction span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--waku-accent);margin-right:8px;}
 
   /* ===== Sections ===== */
   section{padding:32px 0;}
   .section-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
-  .section-head .mark{width:12px;height:12px;border-radius:50%;background:var(--green);flex:none;}
+  .section-head .mark{width:12px;height:12px;border-radius:50%;background:var(--waku-accent);flex:none;}
   .section-head h2{font-size:24px;font-weight:700;line-height:1.4;}
-  .section-lead{color:var(--black);margin-bottom:24px;}
+  .section-lead{color:var(--waku-text-primary);margin-bottom:24px;}
   .sub-head{font-size:16px;font-weight:700;margin:32px 0 16px;}
-  .note{font-size:12px;color:var(--gray-text);line-height:1.7;}
+  .note{font-size:12px;color:var(--waku-text-secondary);line-height:1.7;}
 
   /* ===== Color ===== */
   .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
-  .swatch{border:1px solid var(--gray-line);border-radius:var(--radius-l);overflow:hidden;}
+  .swatch{border:1px solid var(--waku-border-default);border-radius:var(--waku-radius-lg);overflow:hidden;}
   .swatch .chip{height:64px;}
   .swatch .meta{padding:8px 12px 12px;}
   .swatch .name{font-weight:700;font-size:16px;}
   .swatch .hex{font-family:'Poppins',sans-serif;font-size:14px;}
-  .swatch .role{font-size:12px;color:var(--gray-text);}
+  .swatch .role{font-size:12px;color:var(--waku-text-secondary);}
 
   /* ===== Text Style ===== */
-  .type-list{border-top:1px solid var(--gray-line);}
-  .type-row{display:flex;align-items:baseline;gap:24px;padding:16px 0;border-bottom:1px solid var(--gray-line);flex-wrap:wrap;}
-  .type-row .spec{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gray-text);width:140px;flex:none;}
+  .type-list{border-top:1px solid var(--waku-border-default);}
+  .type-row{display:flex;align-items:baseline;gap:24px;padding:16px 0;border-bottom:1px solid var(--waku-border-default);flex-wrap:wrap;}
+  .type-row .spec{font-family:'Poppins',sans-serif;font-size:12px;color:var(--waku-text-secondary);width:140px;flex:none;}
   .t-32{font-size:32px;font-weight:700;line-height:1.3;}
   .t-24{font-size:24px;font-weight:700;line-height:1.4;}
   .t-16{font-size:16px;}
   .t-14{font-size:14px;}
-  .t-12{font-size:12px;color:var(--gray-text);}
+  .t-12{font-size:12px;color:var(--waku-text-secondary);}
 
   /* ===== Corner Radius ===== */
   .radius-grid{display:flex;gap:24px;flex-wrap:wrap;}
   .radius-item{text-align:center;}
-  .radius-box{width:96px;height:96px;background:var(--gray-bg);border:2px solid var(--black);margin:0 auto 8px;}
+  .radius-box{width:96px;height:96px;background:var(--waku-surface-secondary);border:2px solid var(--waku-border-strong);margin:0 auto 8px;}
   .radius-item .r-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;}
-  .radius-item .r-use{font-size:12px;color:var(--gray-text);max-width:120px;}
+  .radius-item .r-use{font-size:12px;color:var(--waku-text-secondary);max-width:120px;}
 
   /* ===== Shadow ===== */
-  .shadow-stage{background:var(--gray-bg);border-radius:var(--radius-l);padding:48px 24px;display:flex;justify-content:center;}
+  .shadow-stage{background:var(--waku-surface-secondary);border-radius:var(--waku-radius-lg);padding:48px 24px;display:flex;justify-content:center;}
   .shadow-demo{
-    background:var(--white);border:2px solid var(--black);border-radius:var(--radius-m);
-    padding:16px 24px;font-weight:700;box-shadow:var(--shadow-offset);
+    background:var(--waku-surface-primary);border:2px solid var(--waku-border-strong);border-radius:var(--waku-radius-md);
+    padding:16px 24px;font-weight:700;box-shadow:var(--waku-shadow-floating);
   }
 
   /* ===== Spacing ===== */
   .spacing-list{display:flex;flex-direction:column;gap:8px;}
   .spacing-row{display:flex;align-items:center;gap:16px;}
-  .spacing-bar{height:16px;background:var(--green);border:1px solid var(--black);flex:none;}
+  .spacing-bar{height:16px;background:var(--waku-accent);border:1px solid var(--waku-border-strong);flex:none;}
   .spacing-row .s-label{font-family:'Poppins',sans-serif;font-size:14px;}
 
   /* ===== Icons ===== */
   .icon-row{display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
   .icon-item{text-align:center;}
   .icon-item svg{display:block;margin:0 auto 4px;}
-  .icon-item .i-name{font-size:12px;color:var(--gray-text);}
+  .icon-item .i-name{font-size:12px;color:var(--waku-text-secondary);}
+
+  /* ===== Tokens ===== */
+  .token-code{
+    background:var(--waku-surface-secondary);border:1px solid var(--waku-border-default);
+    border-radius:var(--waku-radius-lg);padding:24px;overflow-x:auto;white-space:pre;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;line-height:1.8;
+  }
+  .token-cat{font-size:16px;font-weight:700;margin:24px 0 8px;}
+  .token-table{width:100%;border-collapse:collapse;font-size:14px;}
+  .token-table th,.token-table td{border:1px solid var(--waku-border-default);padding:8px 12px;text-align:left;vertical-align:top;}
+  .token-table th{font-weight:700;background:var(--waku-surface-secondary);white-space:nowrap;}
+  .token-table td.t-name{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;white-space:nowrap;}
+  .token-table td.t-val{font-family:'Poppins',sans-serif;font-size:12px;white-space:nowrap;}
 
   /* ===== Button ===== */
   .btn-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;
-    height:48px;padding:0 24px;border-radius:var(--radius-pill);
+    height:48px;padding:0 24px;border-radius:var(--waku-radius-pill);
     font-family:'Poppins','Noto Sans JP',sans-serif;font-size:16px;font-weight:700;
     cursor:pointer;text-decoration:none;transition:box-shadow .12s ease, transform .12s ease;
   }
-  .btn:hover{box-shadow:var(--shadow-offset);}
+  .btn:hover{box-shadow:var(--waku-shadow-floating);}
   .btn:active{box-shadow:none;transform:translate(2px,4px);}
-  .btn-primary{background:var(--green);color:var(--black);border:2px solid var(--black);}
-  .btn-secondary{background:var(--white);color:var(--black);border:2px solid var(--black);}
+  .btn-primary{background:var(--waku-accent);color:var(--waku-text-primary);border:2px solid var(--waku-border-strong);}
+  .btn-secondary{background:var(--waku-surface-primary);color:var(--waku-text-primary);border:2px solid var(--waku-border-strong);}
   .btn-small{height:40px;padding:0 16px;font-size:14px;}
   .btn-text{
-    background:none;border:none;color:var(--black);height:auto;padding:8px 0;
+    background:none;border:none;color:var(--waku-text-primary);height:auto;padding:8px 0;
     border-radius:0;font-weight:700;
   }
   .btn-text:hover{box-shadow:none;text-decoration:underline;}
@@ -144,37 +187,37 @@
   @media (max-width:767px){ .card-grid{grid-template-columns:1fr;} }
   .card{position:relative;}
   .card .thumb{
-    aspect-ratio:4/3;border-radius:var(--radius-l);background:var(--gray-bg);
-    border:1px solid var(--gray-line);position:relative;overflow:hidden;
+    aspect-ratio:4/3;border-radius:var(--waku-radius-lg);background:var(--waku-surface-secondary);
+    border:1px solid var(--waku-border-default);position:relative;overflow:hidden;
     display:flex;align-items:center;justify-content:center;
   }
-  .card .thumb .thumb-circle{width:64px;height:64px;border-radius:50%;background:var(--green);}
-  .card .thumb .thumb-bar{position:absolute;left:16px;bottom:16px;width:96px;height:12px;border-radius:var(--radius-pill);background:var(--black);}
-  .card .thumb .thumb-label{position:absolute;right:16px;top:16px;font-family:'Poppins',sans-serif;font-size:12px;color:var(--gray-text);}
+  .card .thumb .thumb-circle{width:64px;height:64px;border-radius:50%;background:var(--waku-accent);}
+  .card .thumb .thumb-bar{position:absolute;left:16px;bottom:16px;width:96px;height:12px;border-radius:var(--waku-radius-pill);background:var(--waku-color-black);}
+  .card .thumb .thumb-label{position:absolute;right:16px;top:16px;font-family:'Poppins',sans-serif;font-size:12px;color:var(--waku-text-secondary);}
   .badge-new{
     position:absolute;top:12px;left:12px;z-index:2;
-    background:var(--green);color:var(--black);
+    background:var(--waku-accent);color:var(--waku-text-primary);
     font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;
-    border-radius:var(--radius-pill);padding:4px 12px;border:1px solid var(--black);
+    border-radius:var(--waku-radius-pill);padding:4px 12px;border:1px solid var(--waku-border-strong);
   }
   .card .card-title{font-size:16px;font-weight:700;margin-top:16px;}
   .card .card-tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
-  .card .card-date{font-size:12px;color:var(--gray-text);margin-top:8px;}
+  .card .card-date{font-size:12px;color:var(--waku-text-secondary);margin-top:8px;}
 
   /* ===== Tag ===== */
   .tag{
-    display:inline-block;background:var(--gray-bg);color:var(--black);
-    font-size:14px;border-radius:var(--radius-pill);padding:4px 12px;line-height:1.6;
+    display:inline-block;background:var(--waku-surface-secondary);color:var(--waku-text-primary);
+    font-size:14px;border-radius:var(--waku-radius-pill);padding:4px 12px;line-height:1.6;
   }
-  .tag.selected{background:var(--green);font-weight:700;}
+  .tag.selected{background:var(--waku-accent);font-weight:700;}
 
   /* ===== Divider ===== */
-  .divider-strong{border:none;border-top:2px solid var(--black);margin:16px 0;}
-  .divider-weak{border:none;border-top:1px solid var(--gray-line);margin:16px 0;}
+  .divider-strong{border:none;border-top:2px solid var(--waku-border-strong);margin:16px 0;}
+  .divider-weak{border:none;border-top:1px solid var(--waku-border-default);margin:16px 0;}
 
   /* ===== Accordion ===== */
-  .accordion{border-top:1px solid var(--gray-line);}
-  .accordion details{border-bottom:1px solid var(--gray-line);}
+  .accordion{border-top:1px solid var(--waku-border-default);}
+  .accordion details{border-bottom:1px solid var(--waku-border-default);}
   .accordion summary{
     list-style:none;cursor:pointer;padding:16px 0;
     display:flex;justify-content:space-between;align-items:center;
@@ -186,35 +229,35 @@
   .accordion .acc-body{padding:0 0 16px;}
 
   /* ===== List ===== */
-  .list{border-top:1px solid var(--gray-line);}
-  .list-row{display:flex;gap:24px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--gray-line);}
-  .list-row .date{font-size:12px;color:var(--gray-text);font-family:'Poppins',sans-serif;flex:none;width:88px;}
+  .list{border-top:1px solid var(--waku-border-default);}
+  .list-row{display:flex;gap:24px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--waku-border-default);}
+  .list-row .date{font-size:12px;color:var(--waku-text-secondary);font-family:'Poppins',sans-serif;flex:none;width:88px;}
   .list-row .title{font-size:16px;}
 
   /* ===== Image ===== */
   .img-demo{max-width:480px;}
   .img-demo .frame{
-    aspect-ratio:4/3;border-radius:var(--radius-l);background:var(--gray-bg);
-    border:1px solid var(--gray-line);display:flex;align-items:center;justify-content:center;
+    aspect-ratio:4/3;border-radius:var(--waku-radius-lg);background:var(--waku-surface-secondary);
+    border:1px solid var(--waku-border-default);display:flex;align-items:center;justify-content:center;
   }
-  .img-demo .frame .thumb-circle{width:64px;height:64px;border-radius:50%;background:var(--green);}
-  .img-demo figcaption{font-size:12px;color:var(--gray-text);margin-top:8px;}
+  .img-demo .frame .thumb-circle{width:64px;height:64px;border-radius:50%;background:var(--waku-accent);}
+  .img-demo figcaption{font-size:12px;color:var(--waku-text-secondary);margin-top:8px;}
 
   /* ===== Footer ===== */
-  .site-footer{background:var(--black);color:var(--white);margin-top:64px;padding:48px 0;}
-  .site-footer .logo{color:var(--white);}
+  .site-footer{background:var(--waku-color-black);color:var(--waku-color-white);margin-top:64px;padding:48px 0;}
+  .site-footer .logo{color:var(--waku-color-white);}
   .site-footer .foot-nav{display:flex;gap:24px;margin:16px 0;flex-wrap:wrap;}
-  .site-footer .foot-nav a{color:var(--white);text-decoration:none;font-size:16px;}
+  .site-footer .foot-nav a{color:var(--waku-color-white);text-decoration:none;font-size:16px;}
   .site-footer .sns{display:flex;gap:16px;margin:16px 0;}
-  .site-footer .copy{font-size:12px;color:var(--white);opacity:.7;font-family:'Poppins',sans-serif;}
+  .site-footer .copy{font-size:12px;color:var(--waku-color-white);opacity:.7;font-family:'Poppins',sans-serif;}
 
   .hero-concept{font-size:24px;font-weight:700;margin:8px 0 16px;}
   .vision{font-size:24px;font-weight:700;line-height:1.6;margin:16px 0;}
   .values{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap;margin:16px 0;}
-  .value-item{flex:1;min-width:180px;background:var(--gray-bg);border-radius:var(--radius-l);padding:24px;}
+  .value-item{flex:1;min-width:180px;background:var(--waku-surface-secondary);border-radius:var(--waku-radius-lg);padding:24px;}
   .value-word{font-size:24px;font-weight:700;margin-bottom:8px;}
   .value-item p{font-size:16px;margin:0;}
-  .value-arrow{align-self:center;font-weight:700;color:var(--gray-text);}
+  .value-arrow{align-self:center;font-weight:700;color:var(--waku-text-secondary);}
   .principles{margin:16px 0;padding-left:24px;}
   .principles li{font-size:16px;margin-bottom:8px;}
 
@@ -223,12 +266,12 @@
   .sidebar{width:240px;flex-shrink:0;position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto;padding:32px 8px 32px 48px;box-sizing:border-box;}
   .content{flex:1;min-width:0;max-width:1080px;}
   .side-nav{display:flex;flex-direction:column;gap:4px;}
-  .side-nav a{color:var(--black);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:8px;}
-  .side-nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);opacity:0;flex-shrink:0;}
-  .side-nav a.active{font-weight:700;background:var(--gray-bg);}
+  .side-nav a{color:var(--waku-text-primary);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:8px;}
+  .side-nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--waku-accent);opacity:0;flex-shrink:0;}
+  .side-nav a.active{font-weight:700;background:var(--waku-surface-secondary);}
   .side-nav a.active::before{opacity:1;}
   .side-nav .side-top{font-size:16px;font-weight:700;}
-  .side-group{font-size:14px;font-weight:700;color:var(--gray-text);margin:16px 0 4px;padding:0 12px;}
+  .side-group{font-size:14px;font-weight:700;color:var(--waku-text-secondary);margin:16px 0 4px;padding:0 12px;}
   .site-nav a .dot{opacity:0;}
   .site-nav a.current .dot{opacity:1;}
   @media (max-width: 900px){
@@ -259,6 +302,7 @@
   <aside class="sidebar">
     <nav class="side-nav">
       <div class="side-group">スタイル</div>
+      <a href="#tokens" data-spy="tokens">Tokens</a>
       <a href="#color" data-spy="color">Color</a>
       <a href="#color-usage" data-spy="color-usage">Color の使い方</a>
       <a href="#text-style" data-spy="text-style">Text Style</a>
@@ -274,6 +318,118 @@
   <section id="foundation">
     <div class="section-head"><span class="mark"></span><h2>基本要素</h2></div>
     <p class="section-lead">すべてのデザインの土台になる決まりです。</p>
+
+    <h3 class="sub-head" id="tokens">Tokens</h3>
+    <p class="note" style="margin-bottom:16px;">色・文字・角丸・影・余白の値には「デザイントークン」として名前を付けます。元の値そのもの（プリミティブ）と、意味を表す名前（セマンティクス）の2段構成で、コーディングでは意味の名前を使います。名前はすべて <span style="font-family:'Poppins',sans-serif;">--waku-</span> から始まります。</p>
+    <pre class="token-code">:root{
+  /* 色：プリミティブ（元の色） */
+  --waku-color-white:#FFFFFF;
+  --waku-color-black:#000000;
+  --waku-color-green:#00FF00;
+  --waku-color-gray-50:#F7F7F7;
+  --waku-color-gray-200:#E0E0E0;
+  --waku-color-gray-500:#757575;
+
+  /* 色：セマンティクス（意味の名前。使うのはこっち） */
+  --waku-surface-primary:var(--waku-color-white);
+  --waku-surface-secondary:var(--waku-color-gray-50);
+  --waku-text-primary:var(--waku-color-black);
+  --waku-text-secondary:var(--waku-color-gray-500);
+  --waku-border-default:var(--waku-color-gray-200);
+  --waku-border-strong:var(--waku-color-black);
+  --waku-accent:var(--waku-color-green);
+
+  /* 文字 */
+  --waku-font-ja:"Noto Sans JP",sans-serif;
+  --waku-font-en:"Poppins",sans-serif;
+  --waku-font-size-display:32px;
+  --waku-font-size-heading:24px;
+  --waku-font-size-body:16px;
+  --waku-font-size-body-sm:14px;
+  --waku-font-size-caption:12px;
+  --waku-line-height-body:1.7;
+
+  /* 角丸 */
+  --waku-radius-none:0;
+  --waku-radius-sm:4px;
+  --waku-radius-md:8px;
+  --waku-radius-lg:16px;
+  --waku-radius-pill:999px;
+
+  /* 影 */
+  --waku-shadow-floating:4px 8px 0 rgba(0,0,0,0.1);
+
+  /* 余白 */
+  --waku-space-4:4px;
+  --waku-space-8:8px;
+  --waku-space-12:12px;
+  --waku-space-16:16px;
+  --waku-space-24:24px;
+  --waku-space-32:32px;
+  --waku-space-48:48px;
+  --waku-space-64:64px;
+}</pre>
+
+    <h4 class="token-cat">色（意味）</h4>
+    <table class="token-table">
+      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+      <tr><td class="t-name">--waku-surface-primary</td><td class="t-val">#FFFFFF</td><td>基本の背景</td></tr>
+      <tr><td class="t-name">--waku-surface-secondary</td><td class="t-val">#F7F7F7</td><td>白の代わりに敷く面</td></tr>
+      <tr><td class="t-name">--waku-text-primary</td><td class="t-val">#000000</td><td>本文・見出しの文字</td></tr>
+      <tr><td class="t-name">--waku-text-secondary</td><td class="t-val">#757575</td><td>日付や補足の文字</td></tr>
+      <tr><td class="t-name">--waku-border-default</td><td class="t-val">#E0E0E0</td><td>弱い区切り線</td></tr>
+      <tr><td class="t-name">--waku-border-strong</td><td class="t-val">#000000</td><td>強い線・枠</td></tr>
+      <tr><td class="t-name">--waku-accent</td><td class="t-val">#00FF00</td><td>目印だけ（面と印）。文字色には使わない</td></tr>
+    </table>
+
+    <h4 class="token-cat">文字</h4>
+    <table class="token-table">
+      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+      <tr><td class="t-name">--waku-font-ja</td><td class="t-val">"Noto Sans JP", sans-serif</td><td>和文の書体</td></tr>
+      <tr><td class="t-name">--waku-font-en</td><td class="t-val">"Poppins", sans-serif</td><td>欧文の書体</td></tr>
+      <tr><td class="t-name">--waku-font-size-display</td><td class="t-val">32px</td><td>ページタイトル</td></tr>
+      <tr><td class="t-name">--waku-font-size-heading</td><td class="t-val">24px</td><td>セクション見出し</td></tr>
+      <tr><td class="t-name">--waku-font-size-body</td><td class="t-val">16px</td><td>本文</td></tr>
+      <tr><td class="t-name">--waku-font-size-body-sm</td><td class="t-val">14px</td><td>少し小さな本文・注釈</td></tr>
+      <tr><td class="t-name">--waku-font-size-caption</td><td class="t-val">12px</td><td>日付・キャプション</td></tr>
+      <tr><td class="t-name">--waku-line-height-body</td><td class="t-val">1.7</td><td>本文の行間</td></tr>
+    </table>
+
+    <h4 class="token-cat">角丸</h4>
+    <table class="token-table">
+      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+      <tr><td class="t-name">--waku-radius-none</td><td class="t-val">0</td><td>写真そのもの、区切り線</td></tr>
+      <tr><td class="t-name">--waku-radius-sm</td><td class="t-val">4px</td><td>バッジ、小さいボタンなど（短辺 〜20px）</td></tr>
+      <tr><td class="t-name">--waku-radius-md</td><td class="t-val">8px</td><td>小さいカードなど（短辺 21〜64px）</td></tr>
+      <tr><td class="t-name">--waku-radius-lg</td><td class="t-val">16px</td><td>作品カードなど（短辺 65px〜）</td></tr>
+      <tr><td class="t-name">--waku-radius-pill</td><td class="t-val">999px</td><td>タグ・チップ、ボタン専用</td></tr>
+    </table>
+
+    <h4 class="token-cat">影</h4>
+    <table class="token-table">
+      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+      <tr><td class="t-name">--waku-shadow-floating</td><td class="t-val">4px 8px 0 rgba(0,0,0,0.1)</td><td>画面の上に浮く要素だけ（ポップアップ、ホバー時のボタン）</td></tr>
+    </table>
+
+    <h4 class="token-cat">余白</h4>
+    <table class="token-table">
+      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+      <tr><td class="t-name">--waku-space-4</td><td class="t-val">4px</td><td>細かい部品の最小の余白</td></tr>
+      <tr><td class="t-name">--waku-space-8</td><td class="t-val">8px</td><td>基本単位</td></tr>
+      <tr><td class="t-name">--waku-space-12</td><td class="t-val">12px</td><td>小さい部品まわり</td></tr>
+      <tr><td class="t-name">--waku-space-16</td><td class="t-val">16px</td><td>要素の中の余白</td></tr>
+      <tr><td class="t-name">--waku-space-24</td><td class="t-val">24px</td><td>要素と要素の間</td></tr>
+      <tr><td class="t-name">--waku-space-32</td><td class="t-val">32px</td><td>大きめの間隔</td></tr>
+      <tr><td class="t-name">--waku-space-48</td><td class="t-val">48px</td><td>ページ左右の余白（PC）</td></tr>
+      <tr><td class="t-name">--waku-space-64</td><td class="t-val">64px</td><td>セクションの間</td></tr>
+    </table>
+
+    <h4 class="token-cat">コーディング時のルール</h4>
+    <ol class="principles">
+      <li>色は「#FFFFFF」のように直接書かず、意味のトークン（surface／text／border／accent）から使う</li>
+      <li>緑（--waku-accent）は「印」だけに使う。文字の色には使わない</li>
+      <li>余白は --waku-space-* の中から選ぶ。基本は8の倍数で、小さい部品に限って4と12も使える</li>
+    </ol>
 
     <h3 class="sub-head" id="color">Color</h3>
     <div class="swatches">
@@ -421,7 +577,7 @@
   var links = document.querySelectorAll('[data-spy]');
   var map = {};
   links.forEach(function(a){ map[a.getAttribute('data-spy')] = a; });
-  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+  var targets = ['brand','foundation','components','tokens','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
   var seen = {};
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
@@ -434,7 +590,7 @@
     if (activeId && map[activeId]) { map[activeId].classList.add('active'); }
     // header: foundation group -> スタイル, components group -> コンポーネント
     var compIds = ['components','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
-    var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','icons'];
+    var styleIds = ['foundation','tokens','color','color-usage','text-style','radius','shadow','spacing','icons'];
     var headerKey = null;
     if (activeId && compIds.indexOf(activeId) >= 0) headerKey = 'components';
     else if (activeId && styleIds.indexOf(activeId) >= 0) headerKey = 'foundation';
