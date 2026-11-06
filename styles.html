@@ -20,6 +20,13 @@
     --waku-color-neutral-32:#ADADAD;
     --waku-color-neutral-68:#525252;
     --waku-color-neutral-84:#292929;
+    --waku-color-green-3:#F7FFF7;
+    --waku-color-green-5:#F2FFF2;
+    --waku-color-green-9:#E8FFE8;
+    --waku-color-green-14:#DBFFDB;
+    --waku-color-green-32:#ADFFAD;
+    --waku-color-green-68:#52FF52;
+    --waku-color-green-84:#29FF29;
     /* 色：セマンティクス（意味の名前。使うのはこっち） */
     --waku-surface-primary:var(--waku-color-white);
     --waku-surface-secondary:var(--waku-color-neutral-3);
@@ -413,7 +420,7 @@
 
     <div class="use-group">
       <h4 class="use-head">Accent（印）</h4>
-      <p class="use-desc">目印のためだけの色です。面積は小さく、文字色には使いません。</p>
+      <p class="use-desc">目印のためだけの色です。面積は小さく、文字色には使いません。薄い緑の面が要るときは、ブランド緑を白に混ぜた段階（緑の段階）を使います。下の「Green（緑の段階）」の帯がその一覧です。</p>
       <div class="swatches">
         <div class="swatch">
           <div class="chip" style="background:var(--waku-accent);"></div>
@@ -435,9 +442,23 @@
         <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-84);"></div><div class="n-label">黒 84%<br><span class="n-hex">#292929</span></div></div>
       </div>
     </div>
+
+    <div class="use-group">
+      <h4 class="use-head">Green（緑の段階）</h4>
+      <p class="use-desc">ブランド緑（#00FF00）を白に混ぜた7段階の単色です。ニュートラルと同じ段階（3／5／9／14／32／68／84％）でそろえています。薄い緑の面に使い、タグの選択中は緑5％です。濃い段階は面積を小さくし、文字色には使いません。</p>
+      <div class="neutral-strip">
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-3);"></div><div class="n-label">緑 3%<br><span class="n-hex">#F7FFF7</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-5);"></div><div class="n-label">緑 5%<br><span class="n-hex">#F2FFF2</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-9);"></div><div class="n-label">緑 9%<br><span class="n-hex">#E8FFE8</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-14);"></div><div class="n-label">緑 14%<br><span class="n-hex">#DBFFDB</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-32);"></div><div class="n-label">緑 32%<br><span class="n-hex">#ADFFAD</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-68);"></div><div class="n-label">緑 68%<br><span class="n-hex">#52FF52</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-green-84);"></div><div class="n-label">緑 84%<br><span class="n-hex">#29FF29</span></div></div>
+      </div>
+    </div>
       </div>
       <div class="tab-panel" data-tab-panel="token" hidden>
-        <p class="note" style="margin-bottom:16px;">プリミティブは元の値そのもの。実際にコーディングで使うのは、意味のトークンの方です。ニュートラルは、黒を白に混ぜた7段階（3／5／9／14／32／68／84％）の単色で、ブランドカラーの緑と調和させる土台です。</p>
+        <p class="note" style="margin-bottom:16px;">プリミティブは元の値そのもの。実際にコーディングで使うのは、意味のトークンの方です。ニュートラルは、黒を白に混ぜた7段階（3／5／9／14／32／68／84％）の単色で、ブランドカラーの緑と調和させる土台です。緑にも同じ7段階（ブランド緑を白に混ぜた単色）があり、薄い緑の面に使います。</p>
 
         <h4 class="token-cat">色（プリミティブ）</h4>
         <table class="token-table">
@@ -452,6 +473,13 @@
           <tr><td class="t-name">--waku-color-neutral-32</td><td class="t-val">#ADADAD</td><td>黒32％。中間のグレー</td></tr>
           <tr><td class="t-name">--waku-color-neutral-68</td><td class="t-val">#525252</td><td>黒68％。補助文字の元になる色（Text Secondary）</td></tr>
           <tr><td class="t-name">--waku-color-neutral-84</td><td class="t-val">#292929</td><td>黒84％。黒に近いグレー</td></tr>
+          <tr><td class="t-name">--waku-color-green-3</td><td class="t-val">#F7FFF7</td><td>緑3％。もっとも薄い緑の面に</td></tr>
+          <tr><td class="t-name">--waku-color-green-5</td><td class="t-val">#F2FFF2</td><td>緑5％。タグの選択中など、薄い緑の面に</td></tr>
+          <tr><td class="t-name">--waku-color-green-9</td><td class="t-val">#E8FFE8</td><td>緑9％。薄い緑の面に</td></tr>
+          <tr><td class="t-name">--waku-color-green-14</td><td class="t-val">#DBFFDB</td><td>緑14％。少し濃い薄緑の面に</td></tr>
+          <tr><td class="t-name">--waku-color-green-32</td><td class="t-val">#ADFFAD</td><td>緑32％。中間の緑</td></tr>
+          <tr><td class="t-name">--waku-color-green-68</td><td class="t-val">#52FF52</td><td>緑68％。濃いめの緑（面積は小さく）</td></tr>
+          <tr><td class="t-name">--waku-color-green-84</td><td class="t-val">#29FF29</td><td>緑84％。ブランド緑に近い濃さ</td></tr>
         </table>
 
         <h4 class="token-cat">色（意味）</h4>
@@ -480,6 +508,13 @@
   --waku-color-neutral-68:#525252;
   --waku-color-neutral-84:#292929;
 
+  --waku-color-green-3:#F7FFF7;
+  --waku-color-green-5:#F2FFF2;
+  --waku-color-green-9:#E8FFE8;
+  --waku-color-green-14:#DBFFDB;
+  --waku-color-green-32:#ADFFAD;
+  --waku-color-green-68:#52FF52;
+  --waku-color-green-84:#29FF29;
   /* 色：セマンティクス（意味の名前。使うのはこっち） */
   --waku-surface-primary:var(--waku-color-white);
   --waku-surface-secondary:var(--waku-color-neutral-3);

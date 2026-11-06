@@ -20,6 +20,13 @@
     --waku-color-neutral-32:#ADADAD;
     --waku-color-neutral-68:#525252;
     --waku-color-neutral-84:#292929;
+    --waku-color-green-3:#F7FFF7;
+    --waku-color-green-5:#F2FFF2;
+    --waku-color-green-9:#E8FFE8;
+    --waku-color-green-14:#DBFFDB;
+    --waku-color-green-32:#ADFFAD;
+    --waku-color-green-68:#52FF52;
+    --waku-color-green-84:#29FF29;
     /* 色：セマンティクス（意味の名前。使うのはこっち） */
     --waku-surface-primary:var(--waku-color-white);
     --waku-surface-secondary:var(--waku-color-neutral-3);
@@ -200,9 +207,9 @@
     font-size:var(--waku-font-size-caption);border:1px solid transparent;
     border-radius:var(--waku-radius-pill);padding:var(--waku-space-4) var(--waku-space-12);line-height:1.6;
   }
-  /* 選択中：ニュートラル3%の地＋線の色の縁取り（緑の縁取りはしない）。太さは通常と変えない */
+  /* 選択中：緑5%の地＋線の色の縁取り（緑の縁取りはしない）。文字は黒のまま、太さは通常と変えない */
   .tag.selected{
-    background:var(--waku-color-neutral-3);
+    background:var(--waku-color-green-5);
     border-color:var(--waku-border-default);
   }
   /* Tag（ラインタイプ）：下線で選択中を示す */
@@ -474,7 +481,7 @@
     </table>
 
     <h3 class="sub-head" id="c-tag">Tag / Badge</h3>
-    <p class="note" style="margin-bottom:16px;">タグの文字は12pxで、選択中でも太さは変えません。タイプは2種類あります。ボタンタイプはピル型で、地はニュートラル（黒3%）#F7F7F7、選択中は線の色 #DBDBDB の縁取り＋黒文字で示します（緑の縁取りはしません）。ラインタイプは下線で選択中を示します（選択中は黒の2px線）。バッジ（New）も、選択中タグと同じニュートラル3%の地＋線の色の縁取りに揃えています。</p>
+    <p class="note" style="margin-bottom:16px;">タグの文字は12pxで、選択中でも太さは変えません。タイプは2種類あります。ボタンタイプはピル型で、地はニュートラル（黒3%）#F7F7F7、選択中は緑5% #F2FFF2 の地＋線の色 #DBDBDB の縁取り＋黒文字で示します（緑の縁取りはせず、文字色にも緑は使いません）。ラインタイプは下線で選択中を示します（選択中は黒の2px線）。バッジ（New）はニュートラル3%の地＋線の色の縁取りのままです。</p>
     <p class="note" style="margin-bottom:8px;">ボタンタイプ</p>
     <div class="btn-row">
       <span class="tag">通常のタグ</span>
