@@ -111,6 +111,14 @@
   .swatch .name{font-weight:700;font-size:16px;}
   .swatch .hex{font-family:'Noto Sans JP',sans-serif;font-size:14px;}
   .swatch .role{font-size:12px;color:var(--waku-text-secondary);}
+  .swatch .token{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--waku-text-secondary);margin-top:4px;word-break:break-all;}
+
+  /* ===== Color：用途グループ ===== */
+  .use-group{margin-bottom:24px;}
+  .use-group:last-child{margin-bottom:0;}
+  .use-head{font-size:14px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:8px;}
+  .use-head::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--waku-accent);flex:none;}
+  .use-desc{font-size:12px;color:var(--waku-text-secondary);line-height:1.7;margin:0 0 12px;}
 
   /* ===== Text Style ===== */
   .type-list{border-top:1px solid var(--waku-border-default);}
@@ -340,30 +348,68 @@
         <button type="button" class="tab-btn" data-tab-target="token">Token</button>
       </div>
       <div class="tab-panel" data-tab-panel="design">
-    <div class="swatches">
-      <div class="swatch">
-        <div class="chip" style="background:#FFFFFF;"></div>
-        <div class="meta"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">背景</div></div>
+    <p class="note" style="margin-bottom:24px;">色は用途ごとに分けて並べています。使うのは意味のトークン（Surface / Text / Border / Accent）で、元の色（プリミティブ）は Token タブにあります。</p>
+
+    <div class="use-group">
+      <h4 class="use-head">Background（背景）</h4>
+      <p class="use-desc">いちばん下の層です。ページ全体の地の色に使います。</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-surface-primary);"></div>
+          <div class="meta"><div class="name">Surface Primary</div><div class="hex">#FFFFFF</div><div class="role">基本の背景</div><div class="token">--waku-surface-primary</div></div>
+        </div>
       </div>
-      <div class="swatch">
-        <div class="chip" style="background:#000000;"></div>
-        <div class="meta"><div class="name">Black</div><div class="hex">#000000</div><div class="role">文字と線</div></div>
+    </div>
+
+    <div class="use-group">
+      <h4 class="use-head">Surface（面）</h4>
+      <p class="use-desc">背景の上に乗る面の色です。白と区別したいときに敷きます。</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-surface-secondary);"></div>
+          <div class="meta"><div class="name">Surface Secondary</div><div class="hex">#F7F7F7</div><div class="role">白の代わりに敷く面（表の見出し行など）</div><div class="token">--waku-surface-secondary</div></div>
+        </div>
       </div>
-      <div class="swatch">
-        <div class="chip" style="background:#00FF00;"></div>
-        <div class="meta"><div class="name">Vivid Green</div><div class="hex">#00FF00</div><div class="role">アクセント（目印・面のみ。文字色には使わない）</div></div>
+    </div>
+
+    <div class="use-group">
+      <h4 class="use-head">Text（文字）</h4>
+      <p class="use-desc">文字の色です。本文は黒、補助的な文字だけグレーを使います。</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-text-primary);"></div>
+          <div class="meta"><div class="name">Text Primary</div><div class="hex">#000000</div><div class="role">本文・見出しの文字</div><div class="token">--waku-text-primary</div></div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-text-secondary);"></div>
+          <div class="meta"><div class="name">Text Secondary</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div><div class="token">--waku-text-secondary</div></div>
+        </div>
       </div>
-      <div class="swatch">
-        <div class="chip" style="background:#F7F7F7;"></div>
-        <div class="meta"><div class="name">背景グレー</div><div class="hex">#F7F7F7</div><div class="role">白の代わりに敷く面</div></div>
+    </div>
+
+    <div class="use-group">
+      <h4 class="use-head">Border（線）</h4>
+      <p class="use-desc">区切り線や枠の色です。弱い線と強い線の2種類だけにします。</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-border-default);"></div>
+          <div class="meta"><div class="name">Border Default</div><div class="hex">#E0E0E0</div><div class="role">弱い区切り線</div><div class="token">--waku-border-default</div></div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-border-strong);"></div>
+          <div class="meta"><div class="name">Border Strong</div><div class="hex">#000000</div><div class="role">強い線・枠</div><div class="token">--waku-border-strong</div></div>
+        </div>
       </div>
-      <div class="swatch">
-        <div class="chip" style="background:#E0E0E0;"></div>
-        <div class="meta"><div class="name">線グレー</div><div class="hex">#E0E0E0</div><div class="role">弱い区切り線</div></div>
-      </div>
-      <div class="swatch">
-        <div class="chip" style="background:#757575;"></div>
-        <div class="meta"><div class="name">補助文字グレー</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div></div>
+    </div>
+
+    <div class="use-group">
+      <h4 class="use-head">Accent（印）</h4>
+      <p class="use-desc">目印のためだけの色です。面積は小さく、文字色には使いません。</p>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="chip" style="background:var(--waku-accent);"></div>
+          <div class="meta"><div class="name">Accent</div><div class="hex">#00FF00</div><div class="role">目印だけ（面と印）。文字色には使わない</div><div class="token">--waku-accent</div></div>
+        </div>
       </div>
     </div>
       </div>
