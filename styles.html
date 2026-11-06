@@ -161,6 +161,20 @@
   .token-table td.t-name{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;white-space:nowrap;}
   .token-table td.t-val{font-family:'Poppins',sans-serif;font-size:12px;white-space:nowrap;}
 
+  /* ===== Tabs（Design / Token） ===== */
+  .tab-list{display:flex;gap:8px;border-bottom:1px solid var(--waku-border-default);margin-bottom:24px;}
+  .tab-btn{
+    appearance:none;background:none;border:none;cursor:pointer;
+    font-family:'Poppins','Noto Sans JP',sans-serif;font-size:14px;font-weight:700;
+    color:var(--waku-text-secondary);padding:8px 16px;margin-bottom:-1px;
+    border-bottom:2px solid transparent;display:inline-flex;align-items:center;gap:8px;
+  }
+  .tab-btn::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--waku-accent);opacity:0;flex:none;}
+  .tab-btn.active{color:var(--waku-text-primary);border-bottom-color:var(--waku-border-strong);}
+  .tab-btn.active::before{opacity:1;}
+  .tab-panel[hidden]{display:none;}
+  .tab-panel .token-cat:first-child{margin-top:0;}
+
   /* ===== Button ===== */
   .btn-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
   .btn{
@@ -302,7 +316,6 @@
   <aside class="sidebar">
     <nav class="side-nav">
       <div class="side-group">スタイル</div>
-      <a href="#tokens" data-spy="tokens">Tokens</a>
       <a href="#color" data-spy="color">Color</a>
       <a href="#color-usage" data-spy="color-usage">Color の使い方</a>
       <a href="#text-style" data-spy="text-style">Text Style</a>
@@ -319,112 +332,8 @@
     <div class="section-head"><span class="mark"></span><h2>基本要素</h2></div>
     <p class="section-lead">すべてのデザインの土台になる決まりです。</p>
 
-    <h3 class="sub-head" id="tokens">Tokens</h3>
-    <p class="note" style="margin-bottom:16px;">色・文字・角丸・影・余白の値には「デザイントークン」として名前を付けます。元の値そのもの（プリミティブ）と、意味を表す名前（セマンティクス）の2段構成で、コーディングでは意味の名前を使います。名前はすべて <span style="font-family:'Poppins',sans-serif;">--waku-</span> から始まります。</p>
-    <pre class="token-code">:root{
-  /* 色：プリミティブ（元の色） */
-  --waku-color-white:#FFFFFF;
-  --waku-color-black:#000000;
-  --waku-color-green:#00FF00;
-  --waku-color-gray-50:#F7F7F7;
-  --waku-color-gray-200:#E0E0E0;
-  --waku-color-gray-500:#757575;
-
-  /* 色：セマンティクス（意味の名前。使うのはこっち） */
-  --waku-surface-primary:var(--waku-color-white);
-  --waku-surface-secondary:var(--waku-color-gray-50);
-  --waku-text-primary:var(--waku-color-black);
-  --waku-text-secondary:var(--waku-color-gray-500);
-  --waku-border-default:var(--waku-color-gray-200);
-  --waku-border-strong:var(--waku-color-black);
-  --waku-accent:var(--waku-color-green);
-
-  /* 文字 */
-  --waku-font-ja:"Noto Sans JP",sans-serif;
-  --waku-font-en:"Poppins",sans-serif;
-  --waku-font-size-display:32px;
-  --waku-font-size-heading:24px;
-  --waku-font-size-body:16px;
-  --waku-font-size-body-sm:14px;
-  --waku-font-size-caption:12px;
-  --waku-line-height-body:1.7;
-
-  /* 角丸 */
-  --waku-radius-none:0;
-  --waku-radius-sm:4px;
-  --waku-radius-md:8px;
-  --waku-radius-lg:16px;
-  --waku-radius-pill:999px;
-
-  /* 影 */
-  --waku-shadow-floating:4px 8px 0 rgba(0,0,0,0.1);
-
-  /* 余白 */
-  --waku-space-4:4px;
-  --waku-space-8:8px;
-  --waku-space-12:12px;
-  --waku-space-16:16px;
-  --waku-space-24:24px;
-  --waku-space-32:32px;
-  --waku-space-48:48px;
-  --waku-space-64:64px;
-}</pre>
-
-    <h4 class="token-cat">色（意味）</h4>
-    <table class="token-table">
-      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
-      <tr><td class="t-name">--waku-surface-primary</td><td class="t-val">#FFFFFF</td><td>基本の背景</td></tr>
-      <tr><td class="t-name">--waku-surface-secondary</td><td class="t-val">#F7F7F7</td><td>白の代わりに敷く面</td></tr>
-      <tr><td class="t-name">--waku-text-primary</td><td class="t-val">#000000</td><td>本文・見出しの文字</td></tr>
-      <tr><td class="t-name">--waku-text-secondary</td><td class="t-val">#757575</td><td>日付や補足の文字</td></tr>
-      <tr><td class="t-name">--waku-border-default</td><td class="t-val">#E0E0E0</td><td>弱い区切り線</td></tr>
-      <tr><td class="t-name">--waku-border-strong</td><td class="t-val">#000000</td><td>強い線・枠</td></tr>
-      <tr><td class="t-name">--waku-accent</td><td class="t-val">#00FF00</td><td>目印だけ（面と印）。文字色には使わない</td></tr>
-    </table>
-
-    <h4 class="token-cat">文字</h4>
-    <table class="token-table">
-      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
-      <tr><td class="t-name">--waku-font-ja</td><td class="t-val">"Noto Sans JP", sans-serif</td><td>和文の書体</td></tr>
-      <tr><td class="t-name">--waku-font-en</td><td class="t-val">"Poppins", sans-serif</td><td>欧文の書体</td></tr>
-      <tr><td class="t-name">--waku-font-size-display</td><td class="t-val">32px</td><td>ページタイトル</td></tr>
-      <tr><td class="t-name">--waku-font-size-heading</td><td class="t-val">24px</td><td>セクション見出し</td></tr>
-      <tr><td class="t-name">--waku-font-size-body</td><td class="t-val">16px</td><td>本文</td></tr>
-      <tr><td class="t-name">--waku-font-size-body-sm</td><td class="t-val">14px</td><td>少し小さな本文・注釈</td></tr>
-      <tr><td class="t-name">--waku-font-size-caption</td><td class="t-val">12px</td><td>日付・キャプション</td></tr>
-      <tr><td class="t-name">--waku-line-height-body</td><td class="t-val">1.7</td><td>本文の行間</td></tr>
-    </table>
-
-    <h4 class="token-cat">角丸</h4>
-    <table class="token-table">
-      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
-      <tr><td class="t-name">--waku-radius-none</td><td class="t-val">0</td><td>写真そのもの、区切り線</td></tr>
-      <tr><td class="t-name">--waku-radius-sm</td><td class="t-val">4px</td><td>バッジ、小さいボタンなど（短辺 〜20px）</td></tr>
-      <tr><td class="t-name">--waku-radius-md</td><td class="t-val">8px</td><td>小さいカードなど（短辺 21〜64px）</td></tr>
-      <tr><td class="t-name">--waku-radius-lg</td><td class="t-val">16px</td><td>作品カードなど（短辺 65px〜）</td></tr>
-      <tr><td class="t-name">--waku-radius-pill</td><td class="t-val">999px</td><td>タグ・チップ、ボタン専用</td></tr>
-    </table>
-
-    <h4 class="token-cat">影</h4>
-    <table class="token-table">
-      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
-      <tr><td class="t-name">--waku-shadow-floating</td><td class="t-val">4px 8px 0 rgba(0,0,0,0.1)</td><td>画面の上に浮く要素だけ（ポップアップ、ホバー時のボタン）</td></tr>
-    </table>
-
-    <h4 class="token-cat">余白</h4>
-    <table class="token-table">
-      <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
-      <tr><td class="t-name">--waku-space-4</td><td class="t-val">4px</td><td>細かい部品の最小の余白</td></tr>
-      <tr><td class="t-name">--waku-space-8</td><td class="t-val">8px</td><td>基本単位</td></tr>
-      <tr><td class="t-name">--waku-space-12</td><td class="t-val">12px</td><td>小さい部品まわり</td></tr>
-      <tr><td class="t-name">--waku-space-16</td><td class="t-val">16px</td><td>要素の中の余白</td></tr>
-      <tr><td class="t-name">--waku-space-24</td><td class="t-val">24px</td><td>要素と要素の間</td></tr>
-      <tr><td class="t-name">--waku-space-32</td><td class="t-val">32px</td><td>大きめの間隔</td></tr>
-      <tr><td class="t-name">--waku-space-48</td><td class="t-val">48px</td><td>ページ左右の余白（PC）</td></tr>
-      <tr><td class="t-name">--waku-space-64</td><td class="t-val">64px</td><td>セクションの間</td></tr>
-    </table>
-
-    <h4 class="token-cat">コーディング時のルール</h4>
+    <h3 class="sub-head">コーディング時のルール</h3>
+    <p class="note" style="margin-bottom:16px;">色・文字・角丸・影・余白の値には「デザイントークン」として名前を付けます。元の値そのもの（プリミティブ）と、意味を表す名前（セマンティクス）の2段構成で、コーディングでは意味の名前を使います。名前はすべて <span style="font-family:'Poppins',sans-serif;">--waku-</span> から始まります。各カテゴリのトークンの一覧とコードは、それぞれの項目の「Token」タブに入っています。</p>
     <ol class="principles">
       <li>色は「#FFFFFF」のように直接書かず、意味のトークン（surface／text／border／accent）から使う</li>
       <li>緑（--waku-accent）は「印」だけに使う。文字の色には使わない</li>
@@ -432,6 +341,12 @@
     </ol>
 
     <h3 class="sub-head" id="color">Color</h3>
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button type="button" class="tab-btn active" data-tab-target="design">Design</button>
+        <button type="button" class="tab-btn" data-tab-target="token">Token</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="design">
     <div class="swatches">
       <div class="swatch">
         <div class="chip" style="background:#FFFFFF;"></div>
@@ -458,12 +373,66 @@
         <div class="meta"><div class="name">補助文字グレー</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div></div>
       </div>
     </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="token" hidden>
+        <p class="note" style="margin-bottom:16px;">プリミティブは元の値そのもの。実際にコーディングで使うのは、意味のトークンの方です。</p>
+
+        <h4 class="token-cat">色（プリミティブ）</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-color-white</td><td class="t-val">#FFFFFF</td><td>背景の元になる色</td></tr>
+          <tr><td class="t-name">--waku-color-black</td><td class="t-val">#000000</td><td>文字と線の元になる色</td></tr>
+          <tr><td class="t-name">--waku-color-green</td><td class="t-val">#00FF00</td><td>アクセントの元になる色</td></tr>
+          <tr><td class="t-name">--waku-color-gray-50</td><td class="t-val">#F7F7F7</td><td>面に敷くグレーの元になる色</td></tr>
+          <tr><td class="t-name">--waku-color-gray-200</td><td class="t-val">#E0E0E0</td><td>線のグレーの元になる色</td></tr>
+          <tr><td class="t-name">--waku-color-gray-500</td><td class="t-val">#757575</td><td>補助文字のグレーの元になる色</td></tr>
+        </table>
+
+        <h4 class="token-cat">色（意味）</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-surface-primary</td><td class="t-val">#FFFFFF</td><td>基本の背景</td></tr>
+          <tr><td class="t-name">--waku-surface-secondary</td><td class="t-val">#F7F7F7</td><td>白の代わりに敷く面</td></tr>
+          <tr><td class="t-name">--waku-text-primary</td><td class="t-val">#000000</td><td>本文・見出しの文字</td></tr>
+          <tr><td class="t-name">--waku-text-secondary</td><td class="t-val">#757575</td><td>日付や補足の文字</td></tr>
+          <tr><td class="t-name">--waku-border-default</td><td class="t-val">#E0E0E0</td><td>弱い区切り線</td></tr>
+          <tr><td class="t-name">--waku-border-strong</td><td class="t-val">#000000</td><td>強い線・枠</td></tr>
+          <tr><td class="t-name">--waku-accent</td><td class="t-val">#00FF00</td><td>目印だけ（面と印）。文字色には使わない</td></tr>
+        </table>
+
+        <h4 class="token-cat">コード</h4>
+        <pre class="token-code">:root{
+  /* 色：プリミティブ（元の色） */
+  --waku-color-white:#FFFFFF;
+  --waku-color-black:#000000;
+  --waku-color-green:#00FF00;
+  --waku-color-gray-50:#F7F7F7;
+  --waku-color-gray-200:#E0E0E0;
+  --waku-color-gray-500:#757575;
+
+  /* 色：セマンティクス（意味の名前。使うのはこっち） */
+  --waku-surface-primary:var(--waku-color-white);
+  --waku-surface-secondary:var(--waku-color-gray-50);
+  --waku-text-primary:var(--waku-color-black);
+  --waku-text-secondary:var(--waku-color-gray-500);
+  --waku-border-default:var(--waku-color-gray-200);
+  --waku-border-strong:var(--waku-color-black);
+  --waku-accent:var(--waku-color-green);
+}</pre>
+      </div>
+    </div>
 
     <h3 class="sub-head" id="color-usage">Color の使い方</h3>
     <p class="note">配分の目安は、白（背景）がいちばん大きく、次に黒（文字と線）、グレーは補助、ビビットグリーンは面積を小さく「印」としてだけ使います。緑を本文の文字色には使いません。色を増やしたくなったら、まずグレーで足りないか考えます。</p>
     <p class="note">やってはいけない例：緑の大きな背景、色の数を増やす、影を重ねる、本文をグレーで書く（補助文字グレーは日付や注釈だけ）。</p>
 
     <h3 class="sub-head" id="text-style">Text Style</h3>
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button type="button" class="tab-btn active" data-tab-target="design">Design</button>
+        <button type="button" class="tab-btn" data-tab-target="token">Token</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="design">
     <p class="note" style="margin-bottom:16px;">和文は Noto Sans JP、欧文は Poppins（どちらも Google Fonts）。サイズは 12／14／16／24／32 の5段階（2026-11-05に Spindle 型へ変更）。本文まわりは細かく刻み（12／14／16）、見出しで跳ねます（24／32）。行間は本文で1.7倍が目安です。</p>
     <div class="type-list">
       <div class="type-row"><div class="spec">32px / Bold</div><div class="t-32">ページタイトル</div></div>
@@ -472,8 +441,43 @@
       <div class="type-row"><div class="spec">14px / Regular</div><div class="t-14">少し小さな本文です。注釈や、密度の高いUIに使います。</div></div>
       <div class="type-row"><div class="spec">12px / Regular</div><div class="t-12">2026.11.05 日付やキャプションなどの補助テキスト</div></div>
     </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="token" hidden>
+        <h4 class="token-cat">文字</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-font-ja</td><td class="t-val">"Noto Sans JP", sans-serif</td><td>和文の書体</td></tr>
+          <tr><td class="t-name">--waku-font-en</td><td class="t-val">"Poppins", sans-serif</td><td>欧文の書体</td></tr>
+          <tr><td class="t-name">--waku-font-size-display</td><td class="t-val">32px</td><td>ページタイトル</td></tr>
+          <tr><td class="t-name">--waku-font-size-heading</td><td class="t-val">24px</td><td>セクション見出し</td></tr>
+          <tr><td class="t-name">--waku-font-size-body</td><td class="t-val">16px</td><td>本文</td></tr>
+          <tr><td class="t-name">--waku-font-size-body-sm</td><td class="t-val">14px</td><td>少し小さな本文・注釈</td></tr>
+          <tr><td class="t-name">--waku-font-size-caption</td><td class="t-val">12px</td><td>日付・キャプション</td></tr>
+          <tr><td class="t-name">--waku-line-height-body</td><td class="t-val">1.7</td><td>本文の行間</td></tr>
+        </table>
+
+        <h4 class="token-cat">コード</h4>
+        <pre class="token-code">:root{
+  /* 文字 */
+  --waku-font-ja:"Noto Sans JP",sans-serif;
+  --waku-font-en:"Poppins",sans-serif;
+  --waku-font-size-display:32px;
+  --waku-font-size-heading:24px;
+  --waku-font-size-body:16px;
+  --waku-font-size-body-sm:14px;
+  --waku-font-size-caption:12px;
+  --waku-line-height-body:1.7;
+}</pre>
+      </div>
+    </div>
 
     <h3 class="sub-head" id="radius">Corner Radius</h3>
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button type="button" class="tab-btn active" data-tab-target="design">Design</button>
+        <button type="button" class="tab-btn" data-tab-target="token">Token</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="design">
     <p class="note" style="margin-bottom:16px;">角丸は「要素の短辺の長さ」で決めます。気分で変えないのがルールです。タグとボタンはピル型で統一します。</p>
     <div class="radius-grid">
       <div class="radius-item">
@@ -502,14 +506,64 @@
         <div class="r-use">タグ・チップ、ボタン専用</div>
       </div>
     </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="token" hidden>
+        <h4 class="token-cat">角丸</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-radius-none</td><td class="t-val">0</td><td>写真そのもの、区切り線</td></tr>
+          <tr><td class="t-name">--waku-radius-sm</td><td class="t-val">4px</td><td>バッジ、小さいボタンなど（短辺 〜20px）</td></tr>
+          <tr><td class="t-name">--waku-radius-md</td><td class="t-val">8px</td><td>小さいカードなど（短辺 21〜64px）</td></tr>
+          <tr><td class="t-name">--waku-radius-lg</td><td class="t-val">16px</td><td>作品カードなど（短辺 65px〜）</td></tr>
+          <tr><td class="t-name">--waku-radius-pill</td><td class="t-val">999px</td><td>タグ・チップ、ボタン専用</td></tr>
+        </table>
+
+        <h4 class="token-cat">コード</h4>
+        <pre class="token-code">:root{
+  /* 角丸 */
+  --waku-radius-none:0;
+  --waku-radius-sm:4px;
+  --waku-radius-md:8px;
+  --waku-radius-lg:16px;
+  --waku-radius-pill:999px;
+}</pre>
+      </div>
+    </div>
 
     <h3 class="sub-head" id="shadow">Shadow</h3>
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button type="button" class="tab-btn active" data-tab-target="design">Design</button>
+        <button type="button" class="tab-btn" data-tab-target="token">Token</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="design">
     <p class="note" style="margin-bottom:16px;">基本は影なし（フラット）で、区切りは線と余白で付けます。例外として、画面の上に浮く要素（ポップアップや浮いたボタン）だけ、黒 #000000 の10%透過・右下にずれる・ぼかしなしの影を1種類だけ使います（ずれ：右4px／下8px）。ボタンはホバーのときだけこの影が付きます。</p>
     <div class="shadow-stage">
       <div class="shadow-demo">浮いている要素のサンプル</div>
     </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="token" hidden>
+        <h4 class="token-cat">影</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-shadow-floating</td><td class="t-val">4px 8px 0 rgba(0,0,0,0.1)</td><td>画面の上に浮く要素だけ（ポップアップ、ホバー時のボタン）</td></tr>
+        </table>
+
+        <h4 class="token-cat">コード</h4>
+        <pre class="token-code">:root{
+  /* 影 */
+  --waku-shadow-floating:4px 8px 0 rgba(0,0,0,0.1);
+}</pre>
+      </div>
+    </div>
 
     <h3 class="sub-head" id="spacing">Spacing</h3>
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button type="button" class="tab-btn active" data-tab-target="design">Design</button>
+        <button type="button" class="tab-btn" data-tab-target="token">Token</button>
+      </div>
+      <div class="tab-panel" data-tab-panel="design">
     <p class="note" style="margin-bottom:16px;">余白の基本単位は8px。余白は8で割り切れる数字だけを使います。小さいパーツに限って、4で割り切れる数字（例：12px）も使えます。要素の中の余白は16、要素と要素の間は24、セクションの間は64が目安です。</p>
     <div class="spacing-list">
       <div class="spacing-row"><div class="spacing-bar" style="width:4px;"></div><div class="s-label">4</div></div>
@@ -519,6 +573,35 @@
       <div class="spacing-row"><div class="spacing-bar" style="width:32px;"></div><div class="s-label">32</div></div>
       <div class="spacing-row"><div class="spacing-bar" style="width:48px;"></div><div class="s-label">48</div></div>
       <div class="spacing-row"><div class="spacing-bar" style="width:64px;"></div><div class="s-label">64</div></div>
+    </div>
+      </div>
+      <div class="tab-panel" data-tab-panel="token" hidden>
+        <h4 class="token-cat">余白</h4>
+        <table class="token-table">
+          <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
+          <tr><td class="t-name">--waku-space-4</td><td class="t-val">4px</td><td>細かい部品の最小の余白</td></tr>
+          <tr><td class="t-name">--waku-space-8</td><td class="t-val">8px</td><td>基本単位</td></tr>
+          <tr><td class="t-name">--waku-space-12</td><td class="t-val">12px</td><td>小さい部品まわり</td></tr>
+          <tr><td class="t-name">--waku-space-16</td><td class="t-val">16px</td><td>要素の中の余白</td></tr>
+          <tr><td class="t-name">--waku-space-24</td><td class="t-val">24px</td><td>要素と要素の間</td></tr>
+          <tr><td class="t-name">--waku-space-32</td><td class="t-val">32px</td><td>大きめの間隔</td></tr>
+          <tr><td class="t-name">--waku-space-48</td><td class="t-val">48px</td><td>ページ左右の余白（PC）</td></tr>
+          <tr><td class="t-name">--waku-space-64</td><td class="t-val">64px</td><td>セクションの間</td></tr>
+        </table>
+
+        <h4 class="token-cat">コード</h4>
+        <pre class="token-code">:root{
+  /* 余白 */
+  --waku-space-4:4px;
+  --waku-space-8:8px;
+  --waku-space-12:12px;
+  --waku-space-16:16px;
+  --waku-space-24:24px;
+  --waku-space-32:32px;
+  --waku-space-48:48px;
+  --waku-space-64:64px;
+}</pre>
+      </div>
     </div>
 
     <h3 class="sub-head" id="icons">Icons</h3>
@@ -577,7 +660,7 @@
   var links = document.querySelectorAll('[data-spy]');
   var map = {};
   links.forEach(function(a){ map[a.getAttribute('data-spy')] = a; });
-  var targets = ['brand','foundation','components','tokens','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
+  var targets = ['brand','foundation','components','color','color-usage','text-style','radius','shadow','spacing','icons','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
   var seen = {};
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
@@ -590,13 +673,28 @@
     if (activeId && map[activeId]) { map[activeId].classList.add('active'); }
     // header: foundation group -> スタイル, components group -> コンポーネント
     var compIds = ['components','c-header','c-button','c-card','c-tag','c-divider','c-heading','c-accordion','c-list','c-image'];
-    var styleIds = ['foundation','tokens','color','color-usage','text-style','radius','shadow','spacing','icons'];
+    var styleIds = ['foundation','color','color-usage','text-style','radius','shadow','spacing','icons'];
     var headerKey = null;
     if (activeId && compIds.indexOf(activeId) >= 0) headerKey = 'components';
     else if (activeId && styleIds.indexOf(activeId) >= 0) headerKey = 'foundation';
     if (headerKey && map[headerKey] && map[headerKey].closest('.site-nav')) map[headerKey].classList.add('current');
   }, { rootMargin: '-80px 0px -60% 0px' });
   targets.forEach(function(id){ var el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+
+/* ===== Design / Token タブの切り替え ===== */
+(function(){
+  document.querySelectorAll('.tabs').forEach(function(group){
+    var btns = group.querySelectorAll('.tab-btn');
+    var panels = group.querySelectorAll('.tab-panel');
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var target = btn.getAttribute('data-tab-target');
+        btns.forEach(function(b){ b.classList.toggle('active', b === btn); });
+        panels.forEach(function(p){ p.hidden = p.getAttribute('data-tab-panel') !== target; });
+      });
+    });
+  });
 })();
 </script>
 </body>
