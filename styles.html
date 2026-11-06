@@ -13,15 +13,19 @@
     --waku-color-white:#FFFFFF;
     --waku-color-black:#000000;
     --waku-color-green:#00FF00;
-    --waku-color-gray-50:#F7F7F7;
-    --waku-color-gray-200:#E0E0E0;
-    --waku-color-gray-500:#757575;
+    --waku-color-neutral-3:#F7F7F7;
+    --waku-color-neutral-5:#F2F2F2;
+    --waku-color-neutral-9:#E8E8E8;
+    --waku-color-neutral-14:#DBDBDB;
+    --waku-color-neutral-32:#ADADAD;
+    --waku-color-neutral-68:#525252;
+    --waku-color-neutral-84:#292929;
     /* 色：セマンティクス（意味の名前。使うのはこっち） */
     --waku-surface-primary:var(--waku-color-white);
-    --waku-surface-secondary:var(--waku-color-gray-50);
+    --waku-surface-secondary:var(--waku-color-neutral-3);
     --waku-text-primary:var(--waku-color-black);
-    --waku-text-secondary:var(--waku-color-gray-500);
-    --waku-border-default:var(--waku-color-gray-200);
+    --waku-text-secondary:var(--waku-color-neutral-68);
+    --waku-border-default:var(--waku-color-neutral-14);
     --waku-border-strong:var(--waku-color-black);
     --waku-accent:var(--waku-color-green);
     /* 文字 */
@@ -119,6 +123,11 @@
   .use-head{font-size:14px;font-weight:700;margin:0 0 4px;display:flex;align-items:center;gap:8px;}
   .use-head::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--waku-accent);flex:none;}
   .use-desc{font-size:12px;color:var(--waku-text-secondary);line-height:1.7;margin:0 0 12px;}
+  .neutral-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;}
+  @media (max-width:767px){ .neutral-strip{grid-template-columns:repeat(4,1fr);} }
+  .neutral-cell .n-chip{height:48px;border:1px solid var(--waku-border-default);border-radius:var(--waku-radius-md);}
+  .neutral-cell .n-label{font-size:12px;line-height:1.5;margin-top:4px;}
+  .neutral-cell .n-hex{color:var(--waku-text-secondary);}
 
   /* ===== Text Style ===== */
   .type-list{border-top:1px solid var(--waku-border-default);}
@@ -363,7 +372,7 @@
 
     <div class="use-group">
       <h4 class="use-head">Surface（面）</h4>
-      <p class="use-desc">背景の上に乗る面の色です。白と区別したいときに敷きます。</p>
+      <p class="use-desc">背景の上に乗る面の色です。白と区別したいときに敷きます。元の色はニュートラル（黒3％）です。</p>
       <div class="swatches">
         <div class="swatch">
           <div class="chip" style="background:var(--waku-surface-secondary);"></div>
@@ -374,7 +383,7 @@
 
     <div class="use-group">
       <h4 class="use-head">Text（文字）</h4>
-      <p class="use-desc">文字の色です。本文は黒、補助的な文字だけグレーを使います。</p>
+      <p class="use-desc">文字の色です。本文は黒、補助的な文字だけグレーを使います。補助の文字はニュートラル（黒68％）です。</p>
       <div class="swatches">
         <div class="swatch">
           <div class="chip" style="background:var(--waku-text-primary);"></div>
@@ -382,18 +391,18 @@
         </div>
         <div class="swatch">
           <div class="chip" style="background:var(--waku-text-secondary);"></div>
-          <div class="meta"><div class="name">Text Secondary</div><div class="hex">#757575</div><div class="role">日付や補足の文字</div><div class="token">--waku-text-secondary</div></div>
+          <div class="meta"><div class="name">Text Secondary</div><div class="hex">#525252</div><div class="role">日付や補足の文字</div><div class="token">--waku-text-secondary</div></div>
         </div>
       </div>
     </div>
 
     <div class="use-group">
       <h4 class="use-head">Border（線）</h4>
-      <p class="use-desc">区切り線や枠の色です。弱い線と強い線の2種類だけにします。</p>
+      <p class="use-desc">区切り線や枠の色です。弱い線（ニュートラル＝黒14％）と強い線（黒）の2種類だけにします。</p>
       <div class="swatches">
         <div class="swatch">
           <div class="chip" style="background:var(--waku-border-default);"></div>
-          <div class="meta"><div class="name">Border Default</div><div class="hex">#E0E0E0</div><div class="role">弱い区切り線</div><div class="token">--waku-border-default</div></div>
+          <div class="meta"><div class="name">Border Default</div><div class="hex">#DBDBDB</div><div class="role">弱い区切り線</div><div class="token">--waku-border-default</div></div>
         </div>
         <div class="swatch">
           <div class="chip" style="background:var(--waku-border-strong);"></div>
@@ -412,9 +421,23 @@
         </div>
       </div>
     </div>
+
+    <div class="use-group">
+      <h4 class="use-head">Neutral（ニュートラル）</h4>
+      <p class="use-desc">元の色の段階です。黒を白に混ぜた7段階の単色で、ブランドカラーの緑と調和させる土台になります。Surface・Text・Border のグレーはこの段階から取っています（面＝3％、線＝14％、補助文字＝68％）。実際にコーディングで使うのは意味のトークンの方です。</p>
+      <div class="neutral-strip">
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-3);"></div><div class="n-label">黒 3%<br><span class="n-hex">#F7F7F7</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-5);"></div><div class="n-label">黒 5%<br><span class="n-hex">#F2F2F2</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-9);"></div><div class="n-label">黒 9%<br><span class="n-hex">#E8E8E8</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-14);"></div><div class="n-label">黒 14%<br><span class="n-hex">#DBDBDB</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-32);"></div><div class="n-label">黒 32%<br><span class="n-hex">#ADADAD</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-68);"></div><div class="n-label">黒 68%<br><span class="n-hex">#525252</span></div></div>
+        <div class="neutral-cell"><div class="n-chip" style="background:var(--waku-color-neutral-84);"></div><div class="n-label">黒 84%<br><span class="n-hex">#292929</span></div></div>
+      </div>
+    </div>
       </div>
       <div class="tab-panel" data-tab-panel="token" hidden>
-        <p class="note" style="margin-bottom:16px;">プリミティブは元の値そのもの。実際にコーディングで使うのは、意味のトークンの方です。</p>
+        <p class="note" style="margin-bottom:16px;">プリミティブは元の値そのもの。実際にコーディングで使うのは、意味のトークンの方です。ニュートラルは、黒を白に混ぜた7段階（3／5／9／14／32／68／84％）の単色で、ブランドカラーの緑と調和させる土台です。</p>
 
         <h4 class="token-cat">色（プリミティブ）</h4>
         <table class="token-table">
@@ -422,9 +445,13 @@
           <tr><td class="t-name">--waku-color-white</td><td class="t-val">#FFFFFF</td><td>背景の元になる色</td></tr>
           <tr><td class="t-name">--waku-color-black</td><td class="t-val">#000000</td><td>文字と線の元になる色</td></tr>
           <tr><td class="t-name">--waku-color-green</td><td class="t-val">#00FF00</td><td>アクセントの元になる色</td></tr>
-          <tr><td class="t-name">--waku-color-gray-50</td><td class="t-val">#F7F7F7</td><td>面に敷くグレーの元になる色</td></tr>
-          <tr><td class="t-name">--waku-color-gray-200</td><td class="t-val">#E0E0E0</td><td>線のグレーの元になる色</td></tr>
-          <tr><td class="t-name">--waku-color-gray-500</td><td class="t-val">#757575</td><td>補助文字のグレーの元になる色</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-3</td><td class="t-val">#F7F7F7</td><td>黒3％。面の元になる色（Surface Secondary）</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-5</td><td class="t-val">#F2F2F2</td><td>黒5％。ごく薄い面や区切りに</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-9</td><td class="t-val">#E8E8E8</td><td>黒9％。薄い面や線に</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-14</td><td class="t-val">#DBDBDB</td><td>黒14％。線の元になる色（Border Default）</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-32</td><td class="t-val">#ADADAD</td><td>黒32％。中間のグレー</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-68</td><td class="t-val">#525252</td><td>黒68％。補助文字の元になる色（Text Secondary）</td></tr>
+          <tr><td class="t-name">--waku-color-neutral-84</td><td class="t-val">#292929</td><td>黒84％。黒に近いグレー</td></tr>
         </table>
 
         <h4 class="token-cat">色（意味）</h4>
@@ -433,8 +460,8 @@
           <tr><td class="t-name">--waku-surface-primary</td><td class="t-val">#FFFFFF</td><td>基本の背景</td></tr>
           <tr><td class="t-name">--waku-surface-secondary</td><td class="t-val">#F7F7F7</td><td>白の代わりに敷く面</td></tr>
           <tr><td class="t-name">--waku-text-primary</td><td class="t-val">#000000</td><td>本文・見出しの文字</td></tr>
-          <tr><td class="t-name">--waku-text-secondary</td><td class="t-val">#757575</td><td>日付や補足の文字</td></tr>
-          <tr><td class="t-name">--waku-border-default</td><td class="t-val">#E0E0E0</td><td>弱い区切り線</td></tr>
+          <tr><td class="t-name">--waku-text-secondary</td><td class="t-val">#525252</td><td>日付や補足の文字</td></tr>
+          <tr><td class="t-name">--waku-border-default</td><td class="t-val">#DBDBDB</td><td>弱い区切り線</td></tr>
           <tr><td class="t-name">--waku-border-strong</td><td class="t-val">#000000</td><td>強い線・枠</td></tr>
           <tr><td class="t-name">--waku-accent</td><td class="t-val">#00FF00</td><td>目印だけ（面と印）。文字色には使わない</td></tr>
         </table>
@@ -445,16 +472,20 @@
   --waku-color-white:#FFFFFF;
   --waku-color-black:#000000;
   --waku-color-green:#00FF00;
-  --waku-color-gray-50:#F7F7F7;
-  --waku-color-gray-200:#E0E0E0;
-  --waku-color-gray-500:#757575;
+  --waku-color-neutral-3:#F7F7F7;
+  --waku-color-neutral-5:#F2F2F2;
+  --waku-color-neutral-9:#E8E8E8;
+  --waku-color-neutral-14:#DBDBDB;
+  --waku-color-neutral-32:#ADADAD;
+  --waku-color-neutral-68:#525252;
+  --waku-color-neutral-84:#292929;
 
   /* 色：セマンティクス（意味の名前。使うのはこっち） */
   --waku-surface-primary:var(--waku-color-white);
-  --waku-surface-secondary:var(--waku-color-gray-50);
+  --waku-surface-secondary:var(--waku-color-neutral-3);
   --waku-text-primary:var(--waku-color-black);
-  --waku-text-secondary:var(--waku-color-gray-500);
-  --waku-border-default:var(--waku-color-gray-200);
+  --waku-text-secondary:var(--waku-color-neutral-68);
+  --waku-border-default:var(--waku-color-neutral-14);
   --waku-border-strong:var(--waku-color-black);
   --waku-accent:var(--waku-color-green);
 }</pre>

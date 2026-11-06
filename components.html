@@ -13,15 +13,19 @@
     --waku-color-white:#FFFFFF;
     --waku-color-black:#000000;
     --waku-color-green:#00FF00;
-    --waku-color-gray-50:#F7F7F7;
-    --waku-color-gray-200:#E0E0E0;
-    --waku-color-gray-500:#757575;
+    --waku-color-neutral-3:#F7F7F7;
+    --waku-color-neutral-5:#F2F2F2;
+    --waku-color-neutral-9:#E8E8E8;
+    --waku-color-neutral-14:#DBDBDB;
+    --waku-color-neutral-32:#ADADAD;
+    --waku-color-neutral-68:#525252;
+    --waku-color-neutral-84:#292929;
     /* 色：セマンティクス（意味の名前。使うのはこっち） */
     --waku-surface-primary:var(--waku-color-white);
-    --waku-surface-secondary:var(--waku-color-gray-50);
+    --waku-surface-secondary:var(--waku-color-neutral-3);
     --waku-text-primary:var(--waku-color-black);
-    --waku-text-secondary:var(--waku-color-gray-500);
-    --waku-border-default:var(--waku-color-gray-200);
+    --waku-text-secondary:var(--waku-color-neutral-68);
+    --waku-border-default:var(--waku-color-neutral-14);
     --waku-border-strong:var(--waku-color-black);
     --waku-accent:var(--waku-color-green);
     /* 文字 */
@@ -182,9 +186,9 @@
   .card .thumb .thumb-label{position:absolute;right:16px;top:16px;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--waku-text-secondary);}
   .badge-new{
     position:absolute;top:12px;left:12px;z-index:2;
-    background:linear-gradient(180deg,#E9FFE9,#CFFFCF);color:var(--waku-text-primary);
+    background:var(--waku-color-neutral-3);color:var(--waku-text-primary);
     font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;
-    border-radius:var(--waku-radius-pill);padding:4px 12px;border:1px solid var(--waku-color-green);
+    border-radius:var(--waku-radius-pill);padding:4px 12px;border:1px solid var(--waku-border-default);
   }
   .card .card-title{font-size:16px;font-weight:700;margin-top:16px;}
   .card .card-tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
@@ -196,10 +200,10 @@
     font-size:var(--waku-font-size-caption);border:1px solid transparent;
     border-radius:var(--waku-radius-pill);padding:var(--waku-space-4) var(--waku-space-12);line-height:1.6;
   }
-  /* 選択中：薄い緑のグラデーション＋緑の縁取り。太さは通常と変えない */
+  /* 選択中：ニュートラル3%の地＋線の色の縁取り（緑の縁取りはしない）。太さは通常と変えない */
   .tag.selected{
-    background:linear-gradient(180deg,#E9FFE9,#CFFFCF);
-    border-color:var(--waku-color-green);
+    background:var(--waku-color-neutral-3);
+    border-color:var(--waku-border-default);
   }
   /* Tag（ラインタイプ）：下線で選択中を示す */
   .tag-line-group{display:flex;gap:var(--waku-space-24);flex-wrap:wrap;border-bottom:1px solid var(--waku-border-default);}
@@ -234,8 +238,8 @@
   }
   .pager a:hover{text-decoration:underline;}
   .pager a.current{
-    background:linear-gradient(180deg,#E9FFE9,#CFFFCF);
-    border-color:var(--waku-color-green);
+    background:var(--waku-color-neutral-3);
+    border-color:var(--waku-border-default);
   }
 
   /* ===== Table ===== */
@@ -412,7 +416,7 @@
     </div>
 
     <h3 class="sub-head" id="c-divider">Divider</h3>
-    <p class="note">強い区切りは黒の線、弱い区切りは線グレー #E0E0E0 の2種類です。</p>
+    <p class="note">強い区切りは黒の線、弱い区切りは線グレー #DBDBDB の2種類です。</p>
     <hr class="divider-strong">
     <p class="note">↑ 強い区切り（黒）／↓ 弱い区切り（線グレー）</p>
     <hr class="divider-weak">
@@ -447,7 +451,7 @@
     </div>
 
     <h3 class="sub-head" id="c-pager">Pager</h3>
-    <p class="note" style="margin-bottom:16px;">ページ送りです。「前へ」＋ページ番号＋「次へ」が揃ったシンプルな形です。今いるページは、タグの選択中と同じ薄い緑のグラデーション＋緑の縁取りで示します。お知らせ一覧など、項目が増えたときに使います。</p>
+    <p class="note" style="margin-bottom:16px;">ページ送りです。「前へ」＋ページ番号＋「次へ」が揃ったシンプルな形です。今いるページは、タグの選択中と同じニュートラル3%（#F7F7F7）の地＋線の色の縁取りで示します。お知らせ一覧など、項目が増えたときに使います。</p>
     <nav class="pager" aria-label="ページ送り">
       <a href="#">前へ</a>
       <a href="#" class="current" aria-current="page">1</a>
@@ -457,7 +461,7 @@
     </nav>
 
     <h3 class="sub-head" id="c-table">Table</h3>
-    <p class="note" style="margin-bottom:16px;">シンプルな表です。見出し行は背景グレー #F7F7F7、区切りは線グレー #E0E0E0 の細い線だけ、余白は少し広めに取ります。</p>
+    <p class="note" style="margin-bottom:16px;">シンプルな表です。見出し行は背景グレー #F7F7F7、区切りは線グレー #DBDBDB の細い線だけ、余白は少し広めに取ります。</p>
     <table class="waku-table">
       <thead>
         <tr><th>作品名</th><th>カテゴリ</th><th>公開日</th></tr>
@@ -470,7 +474,7 @@
     </table>
 
     <h3 class="sub-head" id="c-tag">Tag / Badge</h3>
-    <p class="note" style="margin-bottom:16px;">タグの文字は12pxで、選択中でも太さは変えません。タイプは2種類あります。ボタンタイプはピル型で、通常は背景グレー #F7F7F7、選択中は薄い緑のグラデーション（#E9FFE9 → #CFFFCF）の地に緑 #00FF00 の縁取り＋黒文字です。ラインタイプは下線で選択中を示します（選択中は黒の2px線）。バッジ（New）も、選択中タグと同じ薄い緑のグラデーション＋緑の縁取りに揃えています。</p>
+    <p class="note" style="margin-bottom:16px;">タグの文字は12pxで、選択中でも太さは変えません。タイプは2種類あります。ボタンタイプはピル型で、地はニュートラル（黒3%）#F7F7F7、選択中は線の色 #DBDBDB の縁取り＋黒文字で示します（緑の縁取りはしません）。ラインタイプは下線で選択中を示します（選択中は黒の2px線）。バッジ（New）も、選択中タグと同じニュートラル3%の地＋線の色の縁取りに揃えています。</p>
     <p class="note" style="margin-bottom:8px;">ボタンタイプ</p>
     <div class="btn-row">
       <span class="tag">通常のタグ</span>
