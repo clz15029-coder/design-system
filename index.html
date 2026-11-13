@@ -62,7 +62,7 @@
     --waku-space-48:48px;
     --waku-space-64:64px;
     /* コンテンツ幅 */
-    --waku-content-max:1080px;
+    --waku-content-max:1600px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -73,8 +73,8 @@
     color:var(--waku-text-primary);
     background:var(--waku-surface-primary);
   }
-  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 24px;}
-  @media (min-width:768px){ .container{padding:0 48px;} }
+  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 max(24px, 5vw);}
+  
 
   /* ===== Header（このページのヘッダー自体がサンプル） ===== */
   .site-header{

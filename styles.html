@@ -62,7 +62,7 @@
     --waku-space-48:48px;
     --waku-space-64:64px;
     /* コンテンツ幅 */
-    --waku-content-max:1080px;
+    --waku-content-max:1600px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -73,8 +73,8 @@
     color:var(--waku-text-primary);
     background:var(--waku-surface-primary);
   }
-  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 24px;}
-  @media (min-width:768px){ .container{padding:0 48px;} }
+  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 max(24px, 5vw);}
+  
 
   /* ===== Header（このページのヘッダー自体がサンプル） ===== */
   .site-header{
@@ -733,38 +733,34 @@
         <button type="button" class="tab-btn" data-tab-target="token">Token</button>
       </div>
       <div class="tab-panel" data-tab-panel="design">
-    <p class="note" style="margin-bottom:16px;">コンテンツの幅の決まりです。画面が広くても、コンテンツは最大1080pxまでで中央に寄せます。左右の余白は、モバイル（768px未満）で24px、PC（768px以上）で48pxです。</p>
+    <p class="note" style="margin-bottom:16px;">コンテンツの幅の決まりです。コンテンツは画面幅に合わせて伸び縮みし、最大1600pxまで広がります。左右の余白は画面幅の5%で、狭い画面でも最小24pxを保ちます。</p>
     <div class="cw-demo">
-      <div class="cw-pad">左右の余白<br>24px（モバイル）<br>48px（PC）</div>
-      <div class="cw-inner">コンテンツ<span class="cw-max">最大 1080px</span></div>
-      <div class="cw-pad">左右の余白<br>24px（モバイル）<br>48px（PC）</div>
+      <div class="cw-pad">左右の余白<br>画面幅の5%<br>（最小24px）</div>
+      <div class="cw-inner">コンテンツ<span class="cw-max">最大 1600px</span></div>
+      <div class="cw-pad">左右の余白<br>画面幅の5%<br>（最小24px）</div>
     </div>
-    <p class="note" style="margin-top:16px;">左右の余白は Spacing のトークン（--waku-space-24 / --waku-space-48）をそのまま使います。新しい数字は作りません。</p>
+    <p class="note" style="margin-top:16px;">左右の余白は「画面幅の5%、最小24px」で計算します。専用の数字は作りません。</p>
       </div>
       <div class="tab-panel" data-tab-panel="token" hidden>
         <h4 class="token-cat">コンテンツ幅</h4>
         <table class="token-table">
           <tr><th>トークン名</th><th>値</th><th>使い道</th></tr>
-          <tr><td class="t-name">--waku-content-max</td><td class="t-val">1080px</td><td>コンテンツの最大幅</td></tr>
-          <tr><td class="t-name">--waku-space-24</td><td class="t-val">24px</td><td>ページ左右の余白（モバイル）</td></tr>
-          <tr><td class="t-name">--waku-space-48</td><td class="t-val">48px</td><td>ページ左右の余白（PC・768px以上）</td></tr>
-        </table>
-        <p class="note" style="margin-bottom:16px;">左右の余白には専用トークンは作らず、余白のトークン（--waku-space-24 / --waku-space-48）を使います。</p>
+          <tr><td class="t-name">--waku-content-max</td><td class="t-val">1600px</td><td>コンテンツの最大幅</td></tr>
+          <tr><td class="t-name">--waku-space-24</td><td class="t-val">24px</td><td>ページ左右の余白の最小値</td></tr>
+                  </table>
+        <p class="note" style="margin-bottom:16px;">左右の余白は画面幅の5%（最小24px）で計算し、専用トークンは作りません。</p>
 
         <h4 class="token-cat">コード</h4>
         <pre class="token-code">:root{
   /* コンテンツ幅 */
-  --waku-content-max:1080px;
+  --waku-content-max:1600px;
 }
 
 /* 使い方の例 */
 .container{
   max-width:var(--waku-content-max);
   margin:0 auto;
-  padding:0 var(--waku-space-24);
-}
-@media (min-width:768px){
-  .container{padding:0 var(--waku-space-48);}
+  padding:0 max(24px, 5vw);
 }</pre>
       </div>
     </div>

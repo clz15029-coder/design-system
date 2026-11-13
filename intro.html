@@ -62,7 +62,7 @@
     --waku-space-48:48px;
     --waku-space-64:64px;
     /* コンテンツ幅 */
-    --waku-content-max:1080px;
+    --waku-content-max:1600px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -73,8 +73,8 @@
     color:var(--waku-text-primary);
     background:var(--waku-surface-primary);
   }
-  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 24px;}
-  @media (min-width:768px){ .container{padding:0 48px;} }
+  .container{max-width:var(--waku-content-max);margin:0 auto;padding:0 max(24px, 5vw);}
+  
 
   /* ===== Header（このページのヘッダー自体がサンプル） ===== */
   .site-header{
@@ -372,11 +372,12 @@
   <!-- ===== バージョン情報 ===== -->
   <section id="version">
     <div class="section-head"><span class="mark"></span><h2>バージョン情報</h2></div>
-    <p class="section-lead">現在のバージョンは <strong>v1.1</strong> です。</p>
+    <p class="section-lead">現在のバージョンは <strong>v1.2</strong> です。</p>
     <table class="token-table">
       <tr><th>バージョン</th><th>日付</th><th>内容</th></tr>
       <tr><td class="t-val">v1.0</td><td class="t-val">2026-11-05</td><td>初版。基本要素とコンポーネントを公開</td></tr>
       <tr><td class="t-val">v1.1</td><td class="t-val">2026-11-06</td><td>デザイントークンを導入（--waku-* の2段構成）。基本要素の各項目に Design / Token タブを追加</td></tr>
+      <tr><td class="t-val">v1.2</td><td class="t-val">2026-11-13</td><td>コンテンツ幅を可変に変更（最大幅 1080px → 1600px、左右の余白は画面幅の5%・最小24px）</td></tr>
     </table>
   </section>
 
